@@ -1,0 +1,22 @@
+[
+  {
+    "name": "AI & Machine Learning",
+    "slug": "ai-machine-learning"
+  },
+  {
+    "name": "Software Development",
+    "slug": "software-development"
+  },
+  {
+    "name": "Information System",
+    "slug": "information-system"
+  },
+  {
+    "name": "Cyber Security",
+    "slug": "cyber-security"
+  },
+  {
+    "name": "Cloud Solutions",
+    "slug": "cloud-solutions"
+  }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Box"
+    },
+    {
+        "name": "Bundle"
+    },
+    {
+        "name": "Case"
+    },
+    {
+        "name": "Each"
+    },
+    {
+        "name": "Pack"
+    },
+    {
+        "name": "Pallet"
+    },
+    {
+        "name": "Piece"
+    },
+    {
+        "name": "Set"
+    }
+]

@@ -1,0 +1,7 @@
+[
+  { "name": "Qualified To Buy", "probability": 20 },
+  { "name": "Contact Made", "probability": 40 },
+  { "name": "Presentation Scheduled", "probability": 60 },
+  { "name": "Proposal Made", "probability": 80 },
+  { "name": "Appointment Scheduled", "probability": 90 }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "category": "AI & Machine Learning",
+    "solutions": [
+      { "name": "AI Chatbot Integration", "code": "SOL-AI-01", "hourly_rate": 1500000, "daily_rate": 12000000, "fixed_price": 50000000 },
+      { "name": "Predictive Analytics Engine", "code": "SOL-AI-02", "hourly_rate": 2000000, "daily_rate": 16000000, "fixed_price": 85000000 },
+      { "name": "Computer Vision System", "code": "SOL-AI-03", "hourly_rate": 2500000, "daily_rate": 20000000, "fixed_price": 120000000 }
+    ]
+  },
+  {
+    "category": "Software Development",
+    "solutions": [
+      { "name": "Custom Web Application", "code": "SOL-DEV-01", "hourly_rate": 1000000, "daily_rate": 8000000, "fixed_price": 40000000 },
+      { "name": "Mobile App Development", "code": "SOL-DEV-02", "hourly_rate": 1200000, "daily_rate": 9600000, "fixed_price": 60000000 },
+      { "name": "API Integration Middleware", "code": "SOL-DEV-03", "hourly_rate": 1100000, "daily_rate": 8800000, "fixed_price": 35000000 }
+    ]
+  },
+  {
+    "category": "Information System",
+    "solutions": [
+      { "name": "ERP Implementation", "code": "SOL-IS-01", "hourly_rate": 1800000, "daily_rate": 14400000, "fixed_price": 200000000 },
+      { "name": "HRIS Deployment", "code": "SOL-IS-02", "hourly_rate": 1500000, "daily_rate": 12000000, "fixed_price": 100000000 },
+      { "name": "Inventory Management System", "code": "SOL-IS-03", "hourly_rate": 1400000, "daily_rate": 11200000, "fixed_price": 80000000 }
+    ]
+  },
+  {
+    "category": "Cyber Security",
+    "solutions": [
+      { "name": "Penetration Testing", "code": "SOL-SEC-01", "hourly_rate": 2500000, "daily_rate": 20000000, "fixed_price": 50000000 },
+      { "name": "Security Audit & Compliance", "code": "SOL-SEC-02", "hourly_rate": 2000000, "daily_rate": 16000000, "fixed_price": 75000000 },
+      { "name": "Incident Response Retainer", "code": "SOL-SEC-03", "hourly_rate": 3000000, "daily_rate": 24000000, "fixed_price": 150000000 }
+    ]
+  },
+  {
+    "category": "Cloud Solutions",
+    "solutions": [
+      { "name": "Cloud Migration Strategy", "code": "SOL-CLD-01", "hourly_rate": 1800000, "daily_rate": 14400000, "fixed_price": 60000000 },
+      { "name": "AWS Infrastructure Setup", "code": "SOL-CLD-02", "hourly_rate": 1500000, "daily_rate": 12000000, "fixed_price": 50000000 },
+      { "name": "DevOps Pipeline Automation", "code": "SOL-CLD-03", "hourly_rate": 1600000, "daily_rate": 12800000, "fixed_price": 55000000 }
+    ]
+  }
+]
