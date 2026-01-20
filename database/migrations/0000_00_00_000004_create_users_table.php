@@ -289,6 +289,10 @@ return new class extends Migration
                 ->nullable()                 // ✅ wajib kalau pakai nullOnDelete()
                 ->constrained('users')
                 ->nullOnDelete();
+            $table->string('title');
+            $table->longText('desc')->nullable();
+            $table->string('url')->nullable();
+            $table->string('year', 4)->nullable();
             $table->timestamps();
         });
 
@@ -366,8 +370,8 @@ return new class extends Migration
                 ->nullable()                 // ✅ wajib kalau pakai nullOnDelete()
                 ->constrained('users')
                 ->nullOnDelete();
-            $table->string('title');
-            $table->text('description');
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
             $table->string('file');
             $table->boolean('is_default')->default(false);
             $table->timestamps();

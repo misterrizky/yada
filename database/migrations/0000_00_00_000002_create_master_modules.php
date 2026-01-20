@@ -98,7 +98,7 @@ return new class extends Migration
             $table->index('order');
         });
 
-        
+
 
         Schema::create('job_levels', function (Blueprint $table) {
             $table->id();
@@ -139,6 +139,10 @@ return new class extends Migration
         // =============================================
         Schema::create('skill_categories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('parent_id')
+                ->nullable()                 // ✅ wajib kalau pakai nullOnDelete()
+                ->constrained('skill_categories')
+                ->nullOnDelete();
             $table->string('name');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
