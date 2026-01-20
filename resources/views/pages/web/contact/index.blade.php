@@ -38,7 +38,7 @@ new class extends Component {
     }
 }
 ?>
-<x-layouts.web :title="__('Contact YE: Your Tech Partner for Business Growth')" :description="__('')">
+<x-layouts.web :title="__('Contact YE: Your Tech Partner for Business Growth')" :description="__('Reach out to YE to begin transforming your business through agile, cloud, and AI-powered development.')" :keywords="__('contact, tech partner, ye, business growth')">
     @volt
     <div>
         <div class="relative isolate overflow-hidden bg-white py-24 sm:py-32 dark:bg-black">

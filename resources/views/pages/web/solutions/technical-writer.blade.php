@@ -4,7 +4,7 @@ use function Laravel\Folio\name;
 
 name('web.solutions.technical-writer');
 ?>
-<x-layouts.web :title="__('Technical Writer')" :description="__('')">
+<x-layouts.web :title="__('Technical Writer Services: Document IT Clarity')" :description="__('YE technical writers produce clear IT documentation, manuals, whitepapers, and process descriptions.')" :keywords="__('technical writing, documentation')">
     
     <div class="relative isolate">
         <div class="mx-auto max-w-7xl">
@@ -35,8 +35,8 @@ name('web.solutions.technical-writer');
                 <polygon points="100,100 10,100 50,0 100,0" />
             </svg>
 
-            <img src="https://images.unsplash.com/photo-1483389127117-b6a2102724ae?auto=format&fit=crop&w=1587&q=80"
-                alt="Agile Development" class="aspect-3/2 object-cover lg:aspect-auto lg:size-full" />
+            <img src="{{ asset('assets/media/solutions/technical-writer.jpg') }}"
+                alt="Technical Writer" class="aspect-3/2 object-cover lg:aspect-auto lg:size-full" />
         </div>
     </div>
     <div class="relative isolate">

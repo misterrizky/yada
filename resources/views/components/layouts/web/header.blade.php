@@ -1,6 +1,6 @@
-<header class="sticky top-0 z-50 bg-white dark:bg-black overflow-x-hidden">
-    <div class="container mx-auto w-full max-w-6xl px-4">
-        <div class="flex items-center justify-between py-3">
+<header class="relative sticky top-0 z-50 bg-white dark:bg-black overflow-x-hidden w-full max-w-[100vw]">
+    <div class="container mx-auto max-w-6xl px-4">
+        <div class="flex items-center justify-between py-3 w-full">
             <!-- Brand -->
             <a href="{{ route('web.home') }}" wire:navigate class="group inline-flex min-w-0 items-center gap-2">
                 <img src="{{ asset('icon.png') }}" alt="" class="h-8 w-auto block dark:hidden" />
@@ -83,7 +83,7 @@
     </div>
 
     <!-- ===== Mega Overlay (shared backdrop) ===== -->
-    <div id="megaOverlay" class="fixed inset-0 z-[70] opacity-0 invisible pointer-events-none" aria-hidden="true">
+    <div id="megaOverlay" class="fixed inset-0 z-[70] opacity-0 invisible pointer-events-none overflow-x-hidden" aria-hidden="true">
 
         <!-- Backdrop -->
         <div id="megaBackdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
@@ -94,7 +94,7 @@
                     class="relative overflow-hidden rounded-[2rem] bg-zinc-950/75 ring-1 ring-white/10 shadow-2xl opacity-100 scale-[0.98] max-h-[calc(100vh-96px)]">
 
                     <!-- Parallax glow -->
-                    <div id="megaParallaxGlow" class="absolute -inset-24 opacity-100 pointer-events-none"
+                    <div id="megaParallaxGlow" class="absolute inset-0 scale-[1.15] opacity-100 pointer-events-none"
                         style="background: radial-gradient(700px circle at 20% 20%, rgba(124,58,237,0.20), transparent 55%), radial-gradient(650px circle at 80% 80%, rgba(34,211,238,0.16), transparent 60%);">
                     </div>
 
@@ -646,7 +646,7 @@
     </div><!-- /megaOverlay -->
 
     <!-- ===== Mobile Drawer ===== -->
-    <div id="mobileDrawer" class="fixed inset-0 z-[60] opacity-0 pointer-events-none" aria-hidden="true">
+    <div id="mobileDrawer" class="fixed inset-0 z-[60] opacity-0 pointer-events-none inset-0 z-[60] overflow-x-hidden max-w-[100vw]" aria-hidden="true">
         <div id="mobileBackdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
 
         <aside id="mobilePanel"

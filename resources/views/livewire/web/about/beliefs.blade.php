@@ -40,10 +40,11 @@
               </div>
             </div>
             <div class="mt-8 flex border-t border-gray-800 pt-8">
-              <a href="/files/Compro_YE.pdf"
-                download="Compro_YE.pdf"
+              <a href="/files/Company-Profile-YE-2026.pdf"
+                download="Company-Profile-YE-2026.pdf"
+                target="_blank"
                 class="text-sm/6 font-semibold text-indigo-400 hover:text-indigo-300">
-                Download YEX Company Profile <span aria-hidden="true">&rarr;</span>
+                Download YE Company Profile <span aria-hidden="true">&rarr;</span>
               </a>
             </div>
           </div>

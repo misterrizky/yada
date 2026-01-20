@@ -41,7 +41,7 @@ $projects = computed(function () {
 });
 
 ?>
-<main class="mx-auto max-w-2xl lg:max-w-7xl lg:px-8">
+<main class="mx-auto max-w-2xl lg:max-w-7xl lg:px-8 overflow-x-hidden">
 
     <!-- HEADER -->
     <div class="border-gray-200 pb-10 text-center">

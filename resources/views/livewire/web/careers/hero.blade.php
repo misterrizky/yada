@@ -47,7 +47,7 @@ $clientsPerIndustry = computed(function () {
                 <div class="flex flex-col-reverse gap-1">
                     <dt class="text-base/7 text-gray-300">Industries</dt>
                     <dd class="text-4xl font-semibold tracking-tight text-white">
-                        {{-- {{ $this->clientsPerIndustry }} --}}18+
+                        {{ $this->clientsPerIndustry }}+
                     </dd>
                 </div>
             </dl>

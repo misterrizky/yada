@@ -1,3 +1,15 @@
+<?php
+use App\Models\PM\Project;
+use App\Models\CRM\Company;
+use function Livewire\Volt\computed;
+
+$projectCount = computed(fn() => Project::count());
+$clientCount = computed(fn() => Company::whereHas('projects')->count());
+$clientsPerIndustry = computed(function () {
+    return Company::whereHas('projects')->distinct('industry_id')->count('industry_id');
+});
+
+?>
 <div class="relative isolate">
     <div class="py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -30,19 +42,19 @@
                                     enterprise, and global clients.
                                 </dt>
                                 <dd class="text-5xl font-semibold tracking-tight text-gray-900 dark:text-white"><span
-                                        class="counter" data-target="38">0</span>+ Project</dd>
+                                        data-target="38">{{ $this->projectCount() }}</span>+ Project</dd>
                             </div>
                             <div class="flex flex-col-reverse gap-y-4">
                                 <dt class="text-base/7 text-gray-600 dark:text-gray-400">Trusted by government
                                     institutions, strategic bodies, and leading companies.</dt>
                                 <dd class="text-5xl font-semibold tracking-tight text-gray-900 dark:text-white"><span
-                                        class="counter" data-target="26">0</span>+ Client</dd>
+                                        data-target="26">{{ $this->clientCount() }}</span>+ Client</dd>
                             </div>
                             <div class="flex flex-col-reverse gap-y-4">
                                 <dt class="text-base/7 text-gray-600 dark:text-gray-400">From defense & public services
                                     to retail, finance, and emerging tech.</dt>
                                 <dd class="text-5xl font-semibold tracking-tight text-gray-900 dark:text-white"><span
-                                        class="counter" data-target="14">0</span> Industries
+                                        data-target="109">{{ $this->clientsPerIndustry }}+</span> Industries
                                 </dd>
                             </div>
                         </dl>

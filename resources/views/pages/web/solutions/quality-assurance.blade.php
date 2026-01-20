@@ -4,7 +4,7 @@ use function Laravel\Folio\name;
 
 name('web.solutions.quality-assurance');
 ?>
-<x-layouts.web :title="__('Quality Assurance')" :description="__('')">
+<x-layouts.web :title="__('QA Testing Services: Ensure Performance &amp; Reliability')" :description="__('Ensure app reliability with QA automation, performance testing, and manual quality assessments from YE.')" :keywords="__('qa, testing, performance, automation, quality assurance')">
     
     <div class="relative isolate">
         <div class="mx-auto max-w-7xl">
@@ -35,8 +35,8 @@ name('web.solutions.quality-assurance');
                 <polygon points="100,100 10,100 50,0 100,0" />
             </svg>
 
-            <img src="https://images.unsplash.com/photo-1483389127117-b6a2102724ae?auto=format&fit=crop&w=1587&q=80"
-                alt="Agile Development" class="aspect-3/2 object-cover lg:aspect-auto lg:size-full" />
+            <img src="{{ asset('assets/media/solutions/quality-services.jpg') }}"
+                alt="Quality Assurance" class="aspect-3/2 object-cover lg:aspect-auto lg:size-full" />
         </div>
     </div>
     <div class="relative isolate">

@@ -10,7 +10,7 @@ $industries = computed(function () {
     return Industry::limit(10)->get();
 });
 ?>
-<x-layouts.web :title="__('YE - Software Company in Indonesia')" :description="__('')">
+<x-layouts.web :title="__('YE - Software Company in Indonesia')" :description="__('Explore our proven works in software development, UX/UI design, AI, and digital product transformation.')" :keywords="__('works, portfolio, development, design')">
     <livewire:web.works.hero/>
     <livewire:web.works.featured-project/>
     <livewire:web.works.portfolio/>

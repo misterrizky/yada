@@ -4,7 +4,7 @@ use function Laravel\Folio\name;
 
 name('web.about');
 ?>
-<x-layouts.web :title="__('About Us - Enterprise Cloud & Software Development Company')" :description="__('')">
+<x-layouts.web :title="__('About Us - Enterprise Cloud & Software Development Company')" :description="__('About Us - Enterprise Cloud &amp; Mobile Development Company - YE')" :keywords="__('Discover YE: Agile software, AI, and cloud services powering Southeast Asia’s digital transformation.')">
     <livewire:web.about.hero/>
     <livewire:web.shared.about/>
     <livewire:web.about.beliefs/>

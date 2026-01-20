@@ -6,7 +6,7 @@ $collection = computed(function () {
     return Project::where('is_featured', 1)->get();
 });
 ?>
-<div class="bg-dark-50 sm:py-42 dark:bg-dark-900 flex justify-center dark:bg-dark-900">
+<div class="bg-dark-50 sm:py-42 dark:bg-dark-900 flex justify-center dark:bg-dark-900 overflow-x-hidden">
     <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8 dark:bg-dark-900">
         <!-- <h2 class="text-base/7 font-semibold text-indigo-600 dark:text-indigo-400">Deploy faster</h2> -->
         <p

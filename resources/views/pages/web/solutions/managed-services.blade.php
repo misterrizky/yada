@@ -4,7 +4,7 @@ use function Laravel\Folio\name;
 
 name('web.solutions.managed-services');
 ?>
-<x-layouts.web :title="__('Managed Services')" :description="__('')">
+<x-layouts.web :title="__('Managed IT Services: Scalable and Secure by YE')" :description="__('YE provides managed IT services with robust cloud, security, and system maintenance for long-term growth.')" :keywords="__('managed services, it, cloud, maintenance')">
     
     <div class="relative isolate">
         <div class="mx-auto max-w-7xl">
@@ -35,7 +35,7 @@ name('web.solutions.managed-services');
                 <polygon points="100,100 10,100 50,0 100,0" />
             </svg>
 
-            <img src="https://images.unsplash.com/photo-1483389127117-b6a2102724ae?auto=format&fit=crop&w=1587&q=80"
+            <img src="{{ asset('assets/media/solutions/managed-it-services.jpg') }}"
                 alt="Agile Development" class="aspect-3/2 object-cover lg:aspect-auto lg:size-full" />
         </div>
     </div>

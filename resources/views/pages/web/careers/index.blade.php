@@ -4,7 +4,7 @@ use function Laravel\Folio\name;
 
 name('web.careers');
 ?>
-<x-layouts.web :title="__('Careers')" :description="__('')">
+<x-layouts.web :title="__('Careers at YE: Grow in Software &amp; AI Fields')" :description="__('End-to-end solutions for retail, finance, and more using AI, big data, cloud, and web/mobile apps.')" :keywords="__('enterprise solutions, digital, industry')">
     <livewire:web.careers.hero>
     <!-- <main class="bg-white dark:bg-zinc-950">
         {{-- Hero Section --}}

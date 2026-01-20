@@ -1,4 +1,4 @@
-<div class="relative isolate mb-10">
+<div class="relative isolate mb-10 overflow-x-hidden">
       <div class="bg-dark-900 dark:text-white">
         <header class="absolute inset-x-0 top-0 z-50">
           <nav aria-label="Global" class="mx-auto flex max-w-7xl items-center  justify-between p-6 lg:px-8">

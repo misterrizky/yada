@@ -4,7 +4,7 @@ use function Laravel\Folio\name;
 
 name('web.solutions');
 ?>
-<x-layouts.web :title="__('Solutions')" :description="__('')">
+<x-layouts.web :title="__('Enterprise Solutions: AI, Cloud, Apps by YE')" :description="__('End-to-end solutions for retail, finance, and more using AI, big data, cloud, and web/mobile apps.')" :keywords="__('enterprise solutions, digital, industry')">
     <div class="relative isolate overflow-x-hidden">
         <div class="mx-auto max-w-7xl">
             <div class="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
@@ -35,7 +35,7 @@ name('web.solutions');
             </div>
         </div>
         <div class="bg-gray-50 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 dark:bg-gray-800">
-            <img src="https://images.unsplash.com/photo-1483389127117-b6a2102724ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587&q=80"
+            <img src="{{ asset('assets/media/solutions/software-development.jpg') }}"
                 alt="" class="aspect-3/2 object-cover lg:aspect-auto lg:size-full" />
         </div>
     </div>
@@ -118,7 +118,7 @@ name('web.solutions');
                     </p>
 
                     <p class="text-sm leading-relaxed mt-6">
-                        WGS covers the application and its surrounding environments. We will
+                        YE covers the application and its surrounding environments. We will
                         set up a helpdesk and assign a PIC, who becomes the single support
                         contact point. Our team will provide proactive maintenance during
                         business days and on-call support for critical issues 24/7.
@@ -349,7 +349,7 @@ name('web.solutions');
                         </h3>
                         <p
                             class="mt-3 text-[12px] leading-6 text-slate-500 font-medium dark:text-slate-400 break-words">
-                            On project-based service by default WGS will perform a
+                            On project-based service by default YE will perform a
                             pre-development analysis, consistent progress demo, professional
                             change management practice, testing based on a thorough test plan
                             document – including security and performance tests, and guide
@@ -475,7 +475,7 @@ name('web.solutions');
                         Implementation Starts
                     </h3>
                     <p class="mt-3 text-[12px] leading-5 text-slate-600 font-medium">
-                        On project-based service by default WGS will perform a pre-development
+                        On project-based service by default YE will perform a pre-development
                         analysis, consistent progress demo, professional change management
                         practice, testing based on a thorough test plan document — including
                         security and performance tests, and guide you through UAT. Ultimately,
@@ -715,7 +715,7 @@ name('web.solutions');
                 nav: "Quality Assurance",
                 title: "QUALITY<br/>ASSURANCE",
                 desc: "Improve the apps quality through professional testing services.",
-                highlights: ["WGS STANDARD VALIDATION", "TRACEABILITY MATRIX", "CAPABLE TESTER"],
+                highlights: ["YE STANDARD VALIDATION", "TRACEABILITY MATRIX", "CAPABLE TESTER"],
                 panelType: "oneCol",
                 head: "ADVANTAGES",
                 bullets: [
@@ -726,22 +726,7 @@ name('web.solutions');
                 ],
                 href: "{{ route('web.solutions.quality-assurance') }}",
             },
-            {
-                key: "is",
-                nav: "Information System",
-                title: "INFORMATION<br/>SYSTEM",
-                desc: "Perpetually keeping ahead of technology is essential in FutureProof Innovation.",
-                highlights: ["WGS STANDARD VALIDATION", "TRACEABILITY MATRIX", "CAPABLE TESTER"],
-                panelType: "oneCol",
-                head: "ADVANTAGES",
-                bullets: [
-                    "Best-Practice Testing Methods and Techniques",
-                    "Provide dedicated and experienced tester",
-                    "Tester think out of the box to found the bug",
-                    "Tester give you idea or suggestions that improve your quality software",
-                ],
-                href: "{{ route('web.solutions.information-system') }}",
-            },
+            
             ];
 
             const navEl = document.getElementById("svcNav");

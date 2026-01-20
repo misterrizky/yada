@@ -11,12 +11,12 @@
       <li>
         <img src="{{ asset('assets/media/team/rizky.jpg') }}" alt="" class="aspect-2/3 w-full rounded-2xl object-cover outline-1 -outline-offset-1 outline-black/5 dark:outline-white/10"/>
         <h3 class="mt-6 text-lg/8 font-semibold tracking-tight text-gray-900 dark:text-white">Rizky Ramadhan</h3>
-        <p class="text-base/7 text-gray-600 dark:text-gray-300">PRESIDENT COMMISSIONER</p>
+        <p class="text-base/7 text-gray-600 dark:text-gray-300">CHIEF EXECUTIVE OFFICER</p>
       </li>
       <li>
         <img src="{{ asset('assets/media/team/ryandra.jpeg') }}" alt="" class="aspect-2/3 w-full rounded-2xl object-cover outline-1 -outline-offset-1 outline-black/5 dark:outline-white/10" />
         <h3 class="mt-6 text-lg/8 font-semibold tracking-tight text-gray-900 dark:text-white">Ryandra Gunawan</h3>
-        <p class="text-base/7 text-gray-600 dark:text-gray-300">CHIEF EXECUTIVE OFFICER</p>
+        <p class="text-base/7 text-gray-600 dark:text-gray-300">CHIEF INFORMATION OFFICER</p>
       </li>
       <li>
         <img src="{{ asset('assets/media/team/dani.jpeg') }}" alt="" class="aspect-2/3 w-full rounded-2xl object-cover outline-1 -outline-offset-1 outline-black/5 dark:outline-white/10" />

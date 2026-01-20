@@ -4,7 +4,7 @@ use function Laravel\Folio\name;
 
 name('web.solutions.ai-development');
 ?>
-<x-layouts.web :title="__('AI Development')" :description="__('')">
+<x-layouts.web :title="__('Agile Projects at YE: Scalable, Reliable Software')" :description="__('YE - Largest Enterprise Software Solutions Indonesia')" :keywords="__('ye, cv ye, yada ekidanta, cv yada ekidanta, enterprise software, software outsourcing company, software outsourcing in indonesia, enterprise application, software development company indonesia, system integrator, ai, copilot, new product launching, business process, sap alternative, end to end solution, vehicle dispatcher, vehicle locator, document management system')">
     <div class="relative isolate overflow-hidden pt-14">
         <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2830&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply"
             alt="" class="absolute inset-0 -z-10 size-full object-cover not-dark:hidden" />
@@ -59,7 +59,7 @@ name('web.solutions.ai-development');
                 <div
                     class="relative h-[400px] lg:h-screen overflow-hidden
         [clip-path:polygon(0_0,100%_0,100%_12%,88%_12%,88%_88%,100%_88%,100%_100%,0_100%)]">
-                    <img src="{{ asset('assets/media/blog/thumbnail/eoffice.jpeg') }}" alt="AI Workspace"
+                    <img src="{{ asset('assets/media/solutions/ai-development.png') }}" alt="AI Workspace"
                         class="absolute inset-0 h-full w-full object-cover" />
                 </div>
 

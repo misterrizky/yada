@@ -4,7 +4,7 @@ use function Laravel\Folio\name;
 
 name('web.solutions.project-based');
 ?>
-<x-layouts.web :title="__('Project Based')" :description="__('')">
+<x-layouts.web :title="__('Project-Based Software Solutions by YE')" :description="__('Get flexible project-based software services tailored to your enterprise goals, budget, and timeline.')" :keywords="__('project-based, software development, agile, scrum, devops, software projects, custom dev')">
     
     <div class="relative isolate">
         <div class="mx-auto max-w-7xl">
@@ -36,7 +36,7 @@ name('web.solutions.project-based');
                 <polygon points="100,100 10,100 50,0 100,0" />
             </svg>
 
-            <img src="https://images.unsplash.com/photo-1483389127117-b6a2102724ae?auto=format&fit=crop&w=1587&q=80"
+            <img src="{{ asset('assets/media/solutions/project-based.jpg') }}"
                 alt="Agile Development" class="aspect-3/2 object-cover lg:aspect-auto lg:size-full" />
         </div>
     </div>

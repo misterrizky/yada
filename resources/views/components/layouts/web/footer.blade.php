@@ -2,39 +2,21 @@
     <div class="mx-auto max-w-7xl px-6 pt-16 pb-8 sm:pt-24 lg:px-8 lg:pt-32">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
             <div class="space-y-8">
-                <svg class="h-9 w-10" viewBox="0 0 96 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <g class="logo-y-mark">
-                        <rect x="6" y="6" width="10" height="24" rx="5" transform="rotate(-35 11 18)"
-                            class="transition-fill fill-indigo-300 dark:fill-indigo-600" data-logo-rect
-                            data-logo-offset="0"></rect>
-                        <rect x="32" y="6" width="10" height="24" rx="5" transform="rotate(35 37 18)"
-                            class="transition-fill fill-indigo-500 dark:fill-indigo-400" data-logo-rect
-                            data-logo-offset="2"></rect>
-                        <rect x="19" y="18" width="10" height="24" rx="5"
-                            class="transition-fill fill-indigo-700 dark:fill-indigo-200" data-logo-rect
-                            data-logo-offset="4"></rect>
-                    </g>
-                    <g class="logo-e-mark">
-                        <rect x="58" y="8" width="10" height="32" rx="5"
-                            class="transition-fill fill-indigo-400 dark:fill-indigo-500" data-logo-rect
-                            data-logo-offset="1"></rect>
-                        <rect x="58" y="8" width="24" height="8" rx="4"
-                            class="transition-fill fill-indigo-300 dark:fill-indigo-600" data-logo-rect
-                            data-logo-offset="3"></rect>
-                        <rect x="58" y="22" width="18" height="6" rx="3"
-                            class="transition-fill fill-indigo-500 dark:fill-indigo-400" data-logo-rect
-                            data-logo-offset="0"></rect>
-                        <rect x="58" y="32" width="24" height="8" rx="4"
-                            class="transition-fill fill-indigo-700 dark:fill-indigo-200" data-logo-rect
-                            data-logo-offset="2"></rect>
-                    </g>
-                </svg>
+                <a href="{{ route('web.home') }}" wire:navigate class="group inline-flex min-w-0 items-center gap-2">
+                    <img src="{{ asset('icon.png') }}" alt="" class="h-8 w-auto block dark:hidden" />
+                    <img src="{{ asset('icon-dark.png') }}" alt="" class="h-8 w-auto hidden dark:block" />
+                    <div class="min-w-0 leading-tight">
+                        <div class="text-sm font-semibold tracking-wide truncate">Yada Ekidanta</div>
+                        <div class="text-[11px] dark:text-white/60 text-black/60 truncate hidden sm:block">Tech
+                            Innovation Partner</div>
+                    </div>
+                </a>
                 <p class="text-sm/6 text-balance text-gray-600 dark:text-gray-400">
                     Making the world a better place
                     through constructing elegant hierarchies.
                 </p>
                 <div class="flex gap-x-6">
-                    <a href="#"
+                    <a href="https://www.facebook.com/YadaEkidanta" target="_blank"
                         class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300">
                         <span class="sr-only">Facebook</span>
                         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-6">
@@ -43,7 +25,7 @@
                                 clip-rule="evenodd" fill-rule="evenodd" />
                         </svg>
                     </a>
-                    <a href="#"
+                    <a href="https://www.instagram.com/yadaekidanta" target="_blank"
                         class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300">
                         <span class="sr-only">Instagram</span>
                         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-6">
@@ -52,32 +34,27 @@
                                 clip-rule="evenodd" fill-rule="evenodd" />
                         </svg>
                     </a>
-                    <a href="#"
-                        class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300">
-                        <span class="sr-only">X</span>
-                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-6">
-                            <path
-                                d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z" />
+                    <a href="https://www.linkedin.com/company/yada-ekidanta/" target="_blank"
+                        class="text-gray-800 hover:text-gray-500 dark:text-blue-700 dark:hover:text-gray-600">
+                        <span class="sr-only">LinkedIn</span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-6">
+                            <!-- Background -->
+                            <rect x="2" y="2" width="20" height="20" rx="4" fill="currentColor" />
+
+                            <!-- "in" text -->
+                            <path fill="#ffffff" d="
+            M7.2 10.2h2.1v6.6H7.2z
+            M8.25 6.8a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z
+
+            M11.2 10.2h2v.9h.03c.28-.53.96-1.1 1.97-1.1
+            2.1 0 2.5 1.38 2.5 3.17v3.63h-2.1v-3.22
+            c0-.77-.01-1.76-1.07-1.76
+            -1.08 0-1.25.84-1.25 1.71v3.27h-2.1z
+        " />
                         </svg>
                     </a>
-                    <a href="#"
-                        class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300">
-                        <span class="sr-only">GitHub</span>
-                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-6">
-                            <path
-                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                                clip-rule="evenodd" fill-rule="evenodd" />
-                        </svg>
-                    </a>
-                    <a href="#"
-                        class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300">
-                        <span class="sr-only">YouTube</span>
-                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-6">
-                            <path
-                                d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z"
-                                clip-rule="evenodd" fill-rule="evenodd" />
-                        </svg>
-                    </a>
+
+
                 </div>
             </div>
             <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
@@ -87,14 +64,15 @@
                         <a href="https://maps.app.goo.gl/TxpTJKfpX3HSY3KQ9" target="_blank"
                             class="text-sm/6 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300">
                             <address>
-                            Jl. Pangeran Tubagus Angke No.24B, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11460
+                                Jl. Pangeran Tubagus Angke No.24B, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta
+                                11460
                             </address>
                         </a>
                         <h3 class="text-sm/6 font-semibold dark:text-white mt-5">TECH CENTER</h3>
                         <a href="https://maps.app.goo.gl/RCXuLikGxU7TKKig9" target="_blank"
                             class="text-sm/6 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300">
                             <address>
-                            Komplek Permata Buah Batu Blok C 15B, Bandung, Jawa Barat 40287
+                                Komplek Permata Buah Batu Blok C 15B, Bandung, Jawa Barat 40287
                             </address>
                         </a>
                         <a href="https://wa.me/62817321025" target="_blank"
@@ -200,7 +178,8 @@
             </p>
         </div>
     </div>
-    <svg viewBox="0 0 1024 1024" aria-hidden="true" class="absolute top-1/2 left-1/2 -z-10 size-256 -translate-x-1/2 mask-[radial-gradient(closest-side,white,transparent)]">
+    <svg viewBox="0 0 1024 1024" aria-hidden="true"
+        class="absolute top-1/2 left-1/2 -z-10 size-256 -translate-x-1/2 mask-[radial-gradient(closest-side,white,transparent)]">
         <circle r="512" cx="512" cy="512" fill="url(#8d958450-c69f-4251-94bc-4e091a323369)" fill-opacity="0.7" />
         <defs>
             <radialGradient id="8d958450-c69f-4251-94bc-4e091a323369">
