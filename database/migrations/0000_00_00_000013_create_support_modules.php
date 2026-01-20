@@ -420,31 +420,6 @@ return new class extends Migration
         });
 
         // =============================================
-        // TICKET TAGS - Tags untuk tiket
-        // =============================================
-        Schema::create('ticket_tags', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('color')->default('#3498db');
-            $table->timestamps();
-        });
-
-        // =============================================
-        // TICKET TAG PIVOT
-        // =============================================
-        Schema::create('ticket_tag_ticket', function (Blueprint $table) {
-            $table->foreignId('ticket_id')
-                ->constrained('tickets')
-                ->cascadeOnDelete();
-
-            $table->foreignId('ticket_tag_id')
-                ->constrained('ticket_tags')
-                ->cascadeOnDelete();
-
-            $table->primary(['ticket_id', 'ticket_tag_id']);
-        });
-
-        // =============================================
         // CANNED RESPONSES - Template balasan
         // =============================================
         Schema::create('canned_responses', function (Blueprint $table) {
@@ -546,8 +521,6 @@ return new class extends Migration
         Schema::dropIfExists('kb_articles');
         Schema::dropIfExists('kb_categories');
         Schema::dropIfExists('canned_responses');
-        Schema::dropIfExists('ticket_tag_ticket');
-        Schema::dropIfExists('ticket_tags');
         Schema::dropIfExists('ticket_agent_assignments');
         Schema::dropIfExists('ticket_files');
         Schema::dropIfExists('ticket_replies');
