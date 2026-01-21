@@ -21,7 +21,7 @@ class CrmSeeder extends Seeder
         $stages = \App\Models\Master\Stage::where('flag','=','leads')->get();
         $sources = \App\Models\CRM\Source::all();
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 10000; $i++) {
             \App\Models\Crm\Lead::create([
                 'name' => $faker->name,
                 'company_name' => $faker->company,

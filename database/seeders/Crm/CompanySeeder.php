@@ -52,9 +52,9 @@ class CompanySeeder extends Seeder
                     'status' => 'active',
                     'industry_id' => $c['industry_id'],
                     'source_id' => 5,
-                    'tags' => ['Customer'],
                 ]
             );
+            $company->syncTagsWithType(['Customer'], 'crm');
             // Isi code hanya kalau belum ada
             if (empty($company->code)) {
                 $company->code = $this->makeCompanyCode($company->name);
@@ -1451,10 +1451,10 @@ class CompanySeeder extends Seeder
                     'email_procurement' => $lead['email_procurement'],
                     'industry_id' => $lead['industry_id'],
                     'source_id' => 5,
-                    'status' => 'active',
-                    'tags' => ['Cold Lead'],
+                    'status' => 'active'
                 ]
             );
+            $leadd->syncTagsWithType(['Cold Lead'], 'crm');
             // Isi code hanya kalau belum ada
             if (empty($leadd->code)) {
                 $leadd->code = $this->makeCompanyCode($leadd->name);

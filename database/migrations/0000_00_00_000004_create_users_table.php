@@ -255,9 +255,9 @@ return new class extends Migration
                 ->nullable()                 // ✅ wajib kalau pakai nullOnDelete()
                 ->constrained('degrees')
                 ->nullOnDelete();
-            $table->string('major');
-            $table->string('university');
-            $table->date('graduation_date');
+            $table->string('major')->nullable();
+            $table->string('university')->nullable();
+            $table->date('graduation_date')->nullable();
             $table->timestamps();
         });
 
@@ -342,8 +342,8 @@ return new class extends Migration
                 ->nullOnDelete();
 
             // Salary
-            $table->decimal('hourly_rate', 15, 2)->default(0);
-            $table->decimal('basic_salary', 15, 2)->default(0);
+            $table->decimal('hourly_rate', 15, 2)->nullable()->default(0);
+            $table->decimal('basic_salary', 15, 2)->nullable()->default(0);
 
             $table->text('about')->nullable();
             $table->foreignId('created_by')

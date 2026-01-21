@@ -1013,5 +1013,26 @@
     "st": "a",
     "created_at": null,
     "updated_at": null
+  },
+  {
+    "id": 146,
+    "name": "BANK SEABANK INDONESIA",
+    "st": "a",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 147,
+    "name": "BANK JAGO TBK",
+    "st": "a",
+    "created_at": null,
+    "updated_at": null
+  },
+  {
+    "id": 148,
+    "name": "GOPAY",
+    "st": "a",
+    "created_at": null,
+    "updated_at": null
   }
 ]

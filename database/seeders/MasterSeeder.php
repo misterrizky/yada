@@ -18,6 +18,7 @@ class MasterSeeder extends Seeder
             \Database\Seeders\Master\ProductSeeder::class,
             // \Database\Seeders\Master\RoleCatalogRatecardSeeder::class,
             \Database\Seeders\Master\IndustrySeeder::class,
+            \Database\Seeders\Master\SchoolSeeder::class,
             \Database\Seeders\Master\SourceSeeder::class,
             \Database\Seeders\Master\SolutionSeeder::class,
             \Database\Seeders\Master\TagSeeder::class,

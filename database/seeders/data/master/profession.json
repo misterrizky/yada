@@ -1,0 +1,749 @@
+[
+    {
+        "name": "Dokter"
+    },
+    {
+        "name": "Suster"
+    },
+    {
+        "name": "Dokter Gigi"
+    },
+    {
+        "name": "Apoteker"
+    },
+    {
+        "name": "Guru"
+    },
+    {
+        "name": "Pelajar / Mahasiswa"
+    },
+    {
+        "name": "Pilot"
+    },
+    {
+        "name": "Polisi"
+    },
+    {
+        "name": "Insinyur"
+    },
+    {
+        "name": "Pengacara"
+    },
+    {
+        "name": "Akuntansi"
+    },
+    {
+        "name": "Penyanyi"
+    },
+    {
+        "name": "Koki"
+    },
+    {
+        "name": "Analis Data"
+    },
+    {
+        "name": "Penulis"
+    },
+    {
+        "name": "Seniman"
+    },
+    {
+        "name": "Penari"
+    },
+    {
+        "name": "Ilmuwan"
+    },
+    {
+        "name": "Petani"
+    },
+    {
+        "name": "Nelayan"
+    },
+    {
+        "name": "Sipir"
+    },
+    {
+        "name": "Pelaut"
+    },
+    {
+        "name": "Montir"
+    },
+    {
+        "name": "Pengembang Perangkat Lunak"
+    },
+    {
+        "name": "Bartender"
+    },
+    {
+        "name": "Penjahit"
+    },
+    {
+        "name": "Tukang Kebun"
+    },
+    {
+        "name": "Penjaga Taman"
+    },
+    {
+        "name": "Penari Balet"
+    },
+    {
+        "name": "Konsultan"
+    },
+    {
+        "name": "Programmer"
+    },
+    {
+        "name": "Desain Grafis"
+    },
+    {
+        "name": "Penjaga Keamanan"
+    },
+    {
+        "name": "Pelatih Olahraga"
+    },
+    {
+        "name": "Pramugari"
+    },
+    {
+        "name": "Pramugara"
+    },
+    {
+        "name": "Pengusaha"
+    },
+    {
+        "name": "Peneliti"
+    },
+    {
+        "name": "Aktor"
+    },
+    {
+        "name": "Aktris"
+    },
+    {
+        "name": "Teknisi"
+    },
+    {
+        "name": "Operator Telepon"
+    },
+    {
+        "name": "Penyiar Berita"
+    },
+    {
+        "name": "Pemadam Kebakaran"
+    },
+    {
+        "name": "Pengemudi Taksi"
+    },
+    {
+        "name": "Pengemudi Truk"
+    },
+    {
+        "name": "Pengemudi Bus"
+    },
+    {
+        "name": "Pemandu Wisata"
+    },
+    {
+        "name": "Dokter Hewan"
+    },
+    {
+        "name": "Pendeta"
+    },
+    {
+        "name": "Pastor"
+    },
+    {
+        "name": "Psikolog"
+    },
+    {
+        "name": "Penyiar Radio"
+    },
+    {
+        "name": "Penjaga Kebun Binatang"
+    },
+    {
+        "name": "Pengacara Pembela"
+    },
+    {
+        "name": "Penari Flamenco"
+    },
+    {
+        "name": "Ahli Gizi"
+    },
+    {
+        "name": "Penari Latar"
+    },
+    {
+        "name": "Notaris"
+    },
+    {
+        "name": "Petugas Penerbangan"
+    },
+    {
+        "name": "Guru Musik"
+    },
+    {
+        "name": "Inspektur"
+    },
+    {
+        "name": "Analis Keuangan"
+    },
+    {
+        "name": "Pilot Pesawat Tempur"
+    },
+    {
+        "name": "Ahli Bedah"
+    },
+    {
+        "name": "Perawat"
+    },
+    {
+        "name": "Psikiater"
+    },
+    {
+        "name": "Penjahit"
+    },
+    {
+        "name": "Ahli Masalah Rumah Tangga"
+    },
+    {
+        "name": "Juru Bicara"
+    },
+    {
+        "name": "Penerjemah"
+    },
+    {
+        "name": "Pemusik"
+    },
+    {
+        "name": "Penari Balet"
+    },
+    {
+        "name": "Pedagang"
+    },
+    {
+        "name": "Petugas Kesehatan"
+    },
+    {
+        "name": "Pemangkas"
+    },
+    {
+        "name": "Petugas Kebersihan"
+    },
+    {
+        "name": "Penyelam"
+    },
+    {
+        "name": "Juruterbang Helikopter"
+    },
+    {
+        "name": "Pegawai Bank"
+    },
+    {
+        "name": "Pemburu"
+    },
+    {
+        "name": "Pegawai Toko"
+    },
+    {
+        "name": "Pengawal Pribadi"
+    },
+    {
+        "name": "Penjahit Pakaian"
+    },
+    {
+        "name": "Penyelamat"
+    },
+    {
+        "name": "Penari Ballet"
+    },
+    {
+        "name": "Pekerja Kebun"
+    },
+    {
+        "name": "Pedagang"
+    },
+    {
+        "name": "Pengelola Restoran"
+    },
+    {
+        "name": "Pembuat Roti"
+    },
+    {
+        "name": "Penyiar TV"
+    },
+    {
+        "name": "Pekerja Sosial"
+    },
+    {
+        "name": "Perencana Pernikahan"
+    },
+    {
+        "name": "Pekerja Konstruksi"
+    },
+    {
+        "name": "Pembuatan Film"
+    },
+    {
+        "name": "Pendongeng"
+    },
+    {
+        "name": "Petugas Parkir"
+    },
+    {
+        "name": "Penari Salsa"
+    },
+    {
+        "name": "Pekerja Layanan Pelanggan"
+    },
+    {
+        "name": "Penerjemah"
+    },
+    {
+        "name": "Pemeran"
+    },
+    {
+        "name": "Pembuat Film"
+    },
+    {
+        "name": "Pembuat Cinema"
+    },
+    {
+        "name": "Arkeolog"
+    },
+    {
+        "name": "Ahli Geologi"
+    },
+    {
+        "name": "Ahli Astronomi"
+    },
+    {
+        "name": "Ahli Bioteknologi"
+    },
+    {
+        "name": "Kurator Museum"
+    },
+    {
+        "name": "Penjaga Museum"
+    },
+    {
+        "name": "Ahli Sejarah"
+    },
+    {
+        "name": "Dosen"
+    },
+    {
+        "name": "Pengacara Hak Asasi Manusia"
+    },
+    {
+        "name": "Psikoterapis"
+    },
+    {
+        "name": "Ahli Statistik"
+    },
+    {
+        "name": "Peneliti Medis"
+    },
+    {
+        "name": "Ahli Ekologi"
+    },
+    {
+        "name": "Ahli Biologi Kelautan"
+    },
+    {
+        "name": "Petugas Pemeliharaan"
+    },
+    {
+        "name": "Arsitek"
+    },
+    {
+        "name": "Pengembang Game"
+    },
+    {
+        "name": "Animator"
+    },
+    {
+        "name": "Editor Video"
+    },
+    {
+        "name": "Fotografer"
+    },
+    {
+        "name": "Pustakawan"
+    },
+    {
+        "name": "Ahli Bahasa"
+    },
+    {
+        "name": "Ahli Meteorologi"
+    },
+    {
+        "name": "Insinyur Kimia"
+    },
+    {
+        "name": "Penyuluh Pertanian"
+    },
+    {
+        "name": "Ahli Patologi"
+    },
+    {
+        "name": "Penyuluh Kesehatan"
+    },
+    {
+        "name": "Spesialis Komputer Forensik"
+    },
+    {
+        "name": "Insinyur Penerbangan"
+    },
+    {
+        "name": "Petugas Bea Cukai"
+    },
+    {
+        "name": "Pialang Saham"
+    },
+    {
+        "name": "Manajer Proyek"
+    },
+    {
+        "name": "Direktur Pemasaran"
+    },
+    {
+        "name": "Manajer Keuangan"
+    },
+    {
+        "name": "Perancang Perhiasan"
+    },
+    {
+        "name": "Manajer Sumber Daya Manusia"
+    },
+    {
+        "name": "Ahli Keselamatan Kerja"
+    },
+    {
+        "name": "Petugas Audit"
+    },
+    {
+        "name": "Event Organizer"
+    },
+    {
+        "name": "Ahli Optometri"
+    },
+    {
+        "name": "Teknisi Laboratorium"
+    },
+    {
+        "name": "Ahli Mikrobiologi"
+    },
+    {
+        "name": "Ahli Patologi Klinis"
+    },
+    {
+        "name": "Perencana Keuangan"
+    },
+    {
+        "name": "Manajer Risiko"
+    },
+    {
+        "name": "Konselor"
+    },
+    {
+        "name": "Spesialis SEO"
+    },
+    {
+        "name": "Ahli UX/UI"
+    },
+    {
+        "name": "Ahli Desain Interior"
+    },
+    {
+        "name": "Broker Properti"
+    },
+    {
+        "name": "Ahli Agronomi"
+    },
+    {
+        "name": "Teknisi Elektronik"
+    },
+    {
+        "name": "Ahli Lingkungan"
+    },
+    {
+        "name": "Ahli Jaringan Komputer"
+    },
+    {
+        "name": "Manajer Logistik"
+    },
+    {
+        "name": "Ahli Radiologi"
+    },
+    {
+        "name": "Penulis Naskah"
+    },
+    {
+        "name": "Pemandu Acara"
+    },
+    {
+        "name": "Pengacara Perdata"
+    },
+    {
+        "name": "Ahli Hukum Ketenagakerjaan"
+    },
+    {
+        "name": "Ahli Forensik Digital"
+    },
+    {
+        "name": "Ahli Gizi Olahraga"
+    },
+    {
+        "name": "Perawat Gigi"
+    },
+    {
+        "name": "Ahli Terapi Fisik"
+    },
+    {
+        "name": "Ahli Pendidikan Anak Usia Dini"
+    },
+    {
+        "name": "Petugas IT Support"
+    },
+    {
+        "name": "Insinyur Biomedis"
+    },
+    {
+        "name": "Pembimbing Konseling Keluarga"
+    },
+    {
+        "name": "Pengajar Bahasa Asing"
+    },
+    {
+        "name": "Desainer Multimedia"
+    },
+    {
+        "name": "Penasihat Hukum Perusahaan"
+    },
+    {
+        "name": "Pengendali Udara"
+    },
+    {
+        "name": "Penyiar Podcaster"
+    },
+    {
+        "name": "Penata Rias"
+    },
+    {
+        "name": "Manajer Media Sosial"
+    },
+    {
+        "name": "Ahli Kriptografi"
+    },
+    {
+        "name": "Ahli Kebijakan Publik"
+    },
+    {
+        "name": "Ahli Ekonomi Pembangunan"
+    },
+    {
+        "name": "Ahli Epidemiologi"
+    },
+    {
+        "name": "Peneliti Kecerdasan Buatan"
+    },
+    {
+        "name": "Ahli Paleontologi"
+    },
+    {
+        "name": "Penasehat Hukum Lingkungan"
+    },
+    {
+        "name": "Ahli Pemasaran Digital"
+    },
+    {
+        "name": "Peneliti Sosial"
+    },
+    {
+        "name": "Peneliti Astronomi"
+    },
+    {
+        "name": "Manajer Kepatuhan"
+    },
+    {
+        "name": "Ahli Hak Kekayaan Intelektual"
+    },
+    {
+        "name": "Konsultan Energi Terbarukan"
+    },
+    {
+        "name": "Manajer Komunitas"
+    },
+    {
+        "name": "Petugas Penggalangan Dana"
+    },
+    {
+        "name": "Manajer Krisis"
+    },
+    {
+        "name": "Ahli Teknologi Blockchain"
+    },
+    {
+        "name": "Pengendali Kualitas"
+    },
+    {
+        "name": "Ahli Robotika"
+    },
+    {
+        "name": "Ilmuwan Data"
+    },
+    {
+        "name": "Kurator Seni"
+    },
+    {
+        "name": "Pengembang Teknologi Pertanian"
+    },
+    {
+        "name": "Ahli Pendidikan Khusus"
+    },
+    {
+        "name": "Peneliti Biomedis"
+    },
+    {
+        "name": "Ahli Kecerdasan Emosional"
+    },
+    {
+        "name": "Penyelidik Swasta"
+    },
+    {
+        "name": "Ahli Etika Digital"
+    },
+    {
+        "name": "Manajer Keberagaman"
+    },
+    {
+        "name": "Perancang Pakaian"
+    },
+    {
+        "name": "Konsultan Privasi Data"
+    },
+    {
+        "name": "Petugas Pengendali Virus"
+    },
+    {
+        "name": "Konsultan Karir"
+    },
+    {
+        "name": "Desainer Game"
+    },
+    {
+        "name": "Artis Digital"
+    },
+    {
+        "name": "Penulis Konten SEO"
+    },
+    {
+        "name": "Content Creator"
+    },
+    {
+        "name": "Influencer"
+    },
+    {
+        "name": "E-sports Athlete"
+    },
+    {
+        "name": "Ilmuwan Data"
+    },
+    {
+        "name": "Insinyur Cloud"
+    },
+    {
+        "name": "Spesialis Pemasaran Digital"
+    },
+    {
+        "name": "Analis Keamanan Siber"
+    },
+    {
+        "name": "Manajer Media Sosial"
+    },
+    {
+        "name": "Asisten Virtual"
+    },
+    {
+        "name": "Insinyur Robotika"
+    },
+    {
+        "name": "Konsultan Keberlanjutan"
+    },
+    {
+        "name": "Pengembang Blockchain"
+    },
+    {
+        "name": "Pembawa Acara Podcast"
+    },
+    {
+        "name": "Pengembang Realitas Tertambah"
+    },
+    {
+        "name": "Petugas Keberagaman dan Inklusi"
+    },
+    {
+        "name": "Spesialis Etika AI"
+    },
+    {
+        "name": "Peneliti Pengalaman Pengguna"
+    },
+    {
+        "name": "Pengisi Suara"
+    },
+    {
+        "name": "Ilmuwan Pangan"
+    },
+    {
+        "name": "Pemandu Wisata Luar Angkasa"
+    },
+    {
+        "name": "Spesialis IoT (Internet of Things)"
+    },
+    {
+        "name": "Pengembang Aplikasi Mobile"
+    },
+    {
+        "name": "Pengembang Kecerdasan Buatan (AI)"
+    },
+    {
+        "name": "Insinyur Jaringan"
+    },
+    {
+        "name": "Direktur Kreatif"
+    },
+    {
+        "name": "Penulis Skenario"
+    },
+    {
+        "name": "Musisi Produksi"
+    },
+    {
+        "name": "Manajer Operasional"
+    },
+    {
+        "name": "Manajer Pengadaan"
+    },
+    {
+        "name": "Manajer Supply Chain"
+    },
+    {
+        "name": "Instruktur Kebugaran"
+    },
+    {
+        "name": "Pelatih Pengembangan Diri"
+    },
+    {
+        "name": "Analis Risiko Keuangan"
+    },
+    {
+        "name": "Perencana Keuangan Pribadi"
+    },
+    {
+        "name": "Notaris Publik"
+    },
+    {
+        "name": "Pengacara Lingkungan"
+    }
+]

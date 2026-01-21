@@ -1,0 +1,610 @@
+{
+    "AI/ML": {
+        "Classic ML": [
+            "scikit-learn",
+            "XGBoost",
+            "LightGBM",
+            "CatBoost"
+        ],
+        "CV": [
+            "OpenCV",
+            "YOLO (ecosystem)",
+            "Detectron2 (ecosystem)"
+        ],
+        "Deep Learning": [
+            "PyTorch",
+            "TensorFlow",
+            "Keras",
+            "JAX"
+        ],
+        "MLOps": [
+            "MLflow",
+            "Weights & Biases",
+            "DVC",
+            "Model Registry (concept)",
+            "Monitoring Drift (concept)"
+        ],
+        "NLP/LLM": [
+            "Transformers (Hugging Face)",
+            "SentenceTransformers",
+            "LangChain",
+            "LlamaIndex",
+            "RAG",
+            "Prompt Engineering"
+        ]
+    },
+    "Data Analysis BI": {
+        "Analysis Tools": [
+            "Excel",
+            "Google Sheets",
+            "Jupyter",
+            "Python (Pandas, NumPy)",
+            "R (tidyverse)",
+            "SPSS",
+            "Stata"
+        ],
+        "Analytics Tracking": [
+            "Google Analytics",
+            "Google Tag Manager",
+            "Mixpanel",
+            "Amplitude",
+            "Segment",
+            "Heap"
+        ],
+        "BI Dashboards": [
+            "Tableau",
+            "Power BI",
+            "Looker",
+            "Looker Studio",
+            "Metabase",
+            "Apache Superset",
+            "Redash",
+            "Grafana"
+        ],
+        "Experimentation": [
+            "A/B Testing",
+            "Feature Flagging",
+            "Cohort Analysis",
+            "Funnel Analysis"
+        ],
+        "Visualization Libs": [
+            "Matplotlib",
+            "Plotly",
+            "Bokeh",
+            "Altair",
+            "ggplot2",
+            "D3.js"
+        ]
+    },
+    "Data Engineering": {
+        "BigData Compute": [
+            "Apache Spark",
+            "Flink",
+            "Hadoop",
+            "Trino",
+            "Presto",
+            "Hive"
+        ],
+        "Data Quality Governance": [
+            "Great Expectations",
+            "Soda",
+            "Monte Carlo (concept)",
+            "Data Catalog (concept)",
+            "Lineage (concept)"
+        ],
+        "ETL/ELT": [
+            "Airflow",
+            "Dagster",
+            "Prefect",
+            "dbt",
+            "Fivetran",
+            "Stitch",
+            "Meltano",
+            "AWS Glue",
+            "Azure Data Factory"
+        ],
+        "Storage Formats": [
+            "Parquet",
+            "ORC",
+            "Avro",
+            "CSV",
+            "JSON"
+        ],
+        "Streaming Messaging": [
+            "Kafka",
+            "Redpanda",
+            "Pulsar",
+            "RabbitMQ",
+            "NATS",
+            "Amazon SQS",
+            "Google Pub/Sub",
+            "Azure Service Bus"
+        ]
+    },
+    "Database": {
+        "Graph": [
+            "Neo4j",
+            "Amazon Neptune",
+            "ArangoDB",
+            "JanusGraph"
+        ],
+        "NoSQL Document": [
+            "MongoDB",
+            "CouchDB",
+            "Firestore",
+            "Amazon DocumentDB"
+        ],
+        "NoSQL KeyValue Cache": [
+            "Redis",
+            "Memcached",
+            "Amazon DynamoDB",
+            "Aerospike"
+        ],
+        "NoSQL WideColumn": [
+            "Cassandra",
+            "ScyllaDB",
+            "HBase"
+        ],
+        "ORM Migrations": [
+            "Prisma",
+            "TypeORM",
+            "Sequelize",
+            "Mongoose",
+            "SQLAlchemy",
+            "Django ORM",
+            "Entity Framework",
+            "Hibernate",
+            "Doctrine",
+            "Eloquent",
+            "Alembic",
+            "Flyway",
+            "Liquibase"
+        ],
+        "Relational SQL": [
+            "MySQL",
+            "PostgreSQL",
+            "SQLite",
+            "MariaDB",
+            "Microsoft SQL Server",
+            "Oracle Database",
+            "CockroachDB",
+            "TiDB"
+        ],
+        "Search Analytics": [
+            "Elasticsearch",
+            "OpenSearch",
+            "Solr",
+            "Meilisearch",
+            "Typesense"
+        ],
+        "TimeSeries": [
+            "InfluxDB",
+            "TimescaleDB",
+            "Prometheus (TSDB)",
+            "VictoriaMetrics"
+        ],
+        "VectorDB": [
+            "pgvector",
+            "Pinecone",
+            "Weaviate",
+            "Milvus",
+            "Qdrant",
+            "Chroma",
+            "FAISS"
+        ],
+        "Warehouse Lakehouse": [
+            "BigQuery",
+            "Snowflake",
+            "Redshift",
+            "Azure Synapse",
+            "Databricks",
+            "Delta Lake",
+            "Apache Iceberg",
+            "Apache Hudi"
+        ]
+    },
+    "Design UI/UX": {
+        "Core Skills": [
+            "Wireframing",
+            "Prototyping",
+            "Design System",
+            "User Flow",
+            "Information Architecture",
+            "Usability Testing",
+            "UX Writing"
+        ],
+        "Tools": [
+            "Figma",
+            "FigJam",
+            "Adobe XD",
+            "Sketch",
+            "Miro"
+        ]
+    },
+    "DevOps Cloud": {
+        "CI/CD": [
+            "GitHub Actions",
+            "GitLab CI",
+            "Jenkins",
+            "CircleCI",
+            "Buildkite",
+            "Azure DevOps Pipelines"
+        ],
+        "Cloud Providers": [
+            "AWS",
+            "GCP",
+            "Azure",
+            "DigitalOcean",
+            "Heroku",
+            "Cloudflare",
+            "Vercel",
+            "Netlify"
+        ],
+        "Containers Orchestration": [
+            "Docker",
+            "Docker Compose",
+            "Kubernetes",
+            "Helm",
+            "Kustomize"
+        ],
+        "IaC Config": [
+            "Terraform",
+            "Pulumi",
+            "CloudFormation",
+            "Ansible",
+            "Chef",
+            "Puppet"
+        ],
+        "Observability": [
+            "Prometheus",
+            "Grafana",
+            "ELK/Elastic Stack",
+            "OpenSearch Stack",
+            "OpenTelemetry",
+            "Jaeger",
+            "Zipkin",
+            "Datadog",
+            "New Relic",
+            "Sentry"
+        ],
+        "Version Control": [
+            "Git",
+            "GitHub",
+            "GitLab",
+            "Bitbucket"
+        ],
+        "Web Servers Proxies": [
+            "Nginx",
+            "Apache HTTP Server",
+            "Caddy",
+            "HAProxy",
+            "Traefik"
+        ]
+    },
+    "Documentation Content": {
+        "Formats Tools": [
+            "Markdown",
+            "Notion",
+            "Confluence",
+            "Google Docs",
+            "Docusaurus",
+            "MkDocs",
+            "Sphinx",
+            "Swagger/OpenAPI Docs"
+        ],
+        "Outputs": [
+            "README",
+            "SOP/Runbook",
+            "API Documentation",
+            "User Guide",
+            "Meeting Notes"
+        ]
+    },
+    "Finance Legal Operations": {
+        "Finance": [
+            "Budgeting",
+            "Cashflow Projection",
+            "P&L Basics",
+            "Pricing Strategy (concept)"
+        ],
+        "Legal Compliance": [
+            "Terms of Service (draft)",
+            "Privacy Policy (draft)",
+            "GDPR/PDPA Basics (concept)",
+            "Contract Summary (non-legal advice)"
+        ],
+        "Operations": [
+            "Process Mapping",
+            "SOP Creation",
+            "Risk Register",
+            "Incident Playbook (concept)"
+        ]
+    },
+    "Marketing Growth": {
+        "Channels": [
+            "SEO",
+            "SEM/Google Ads",
+            "Meta Ads",
+            "TikTok Ads",
+            "Email Marketing",
+            "Content Marketing",
+            "Affiliate",
+            "Influencer"
+        ],
+        "Skills": [
+            "Copywriting",
+            "Landing Page Optimization",
+            "Conversion Rate Optimization (CRO)",
+            "Brand Positioning",
+            "Content Strategy"
+        ],
+        "Tooling": [
+            "Google Analytics",
+            "Google Tag Manager",
+            "Search Console",
+            "Ahrefs",
+            "SEMrush",
+            "Mailchimp",
+            "Klaviyo"
+        ]
+    },
+    "Mobile": [
+        "Android (Kotlin/Java)",
+        "iOS (Swift)",
+        "React Native",
+        "Flutter",
+        "Ionic",
+        "Xamarin/.NET MAUI"
+    ],
+    "Networking": [
+        "DNS",
+        "HTTP/HTTPS",
+        "TCP/IP",
+        "TLS/SSL",
+        "CDN",
+        "Load Balancing",
+        "VPN",
+        "Reverse Proxy"
+    ],
+    "NoCode Automation": [
+        "Zapier",
+        "Make (Integromat)",
+        "n8n",
+        "Airtable",
+        "Notion Automations",
+        "Google Apps Script",
+        "Retool",
+        "AppSheet"
+    ],
+    "Programming": {
+        "API Protocols": [
+            "REST",
+            "GraphQL",
+            "gRPC",
+            "WebSocket",
+            "SSE (Server-Sent Events)",
+            "SOAP",
+            "OpenAPI/Swagger",
+            "JSON Schema",
+            "OAuth 2.0",
+            "OIDC",
+            "JWT"
+        ],
+        "Backend": [
+            "Node.js",
+            "Express",
+            "Fastify",
+            "NestJS",
+            "Django",
+            "Flask",
+            "FastAPI",
+            "Laravel",
+            "Symfony",
+            "CodeIgniter",
+            "Spring Boot",
+            "Micronaut",
+            "Quarkus",
+            ".NET",
+            "ASP.NET Core",
+            "Ruby on Rails",
+            "Sinatra",
+            "Gin (Go)",
+            "Fiber (Go)",
+            "Echo (Go)",
+            "Actix (Rust)",
+            "Axum (Rust)",
+            "Rocket (Rust)"
+        ],
+        "Desktop": [
+            "Electron",
+            "Tauri",
+            ".NET WPF",
+            ".NET WinForms",
+            "JavaFX",
+            "Qt",
+            "GTK",
+            "SwiftUI (macOS)"
+        ],
+        "Embedded IoT": [
+            "Arduino",
+            "ESP-IDF",
+            "PlatformIO",
+            "FreeRTOS",
+            "Zephyr",
+            "Raspberry Pi",
+            "MQTT"
+        ],
+        "Frontend Web": [
+            "Tailwind CSS",
+            "Bootstrap",
+            "Sass/SCSS",
+            "Less",
+            "PostCSS",
+            "CSS Modules",
+            "Styled Components",
+            "Emotion",
+            "React",
+            "Next.js",
+            "Vue",
+            "Nuxt",
+            "Angular",
+            "Svelte",
+            "SvelteKit",
+            "SolidJS",
+            "Astro",
+            "Remix",
+            "Gatsby",
+            "Vite",
+            "Webpack",
+            "Rollup",
+            "Parcel",
+            "Babel",
+            "ESLint",
+            "Prettier",
+            "Storybook",
+            "Web Components",
+            "Lit",
+            "Three.js",
+            "D3.js",
+            "Chart.js"
+        ],
+        "Game 3D": [
+            "Unity",
+            "Unreal Engine",
+            "Godot",
+            "Phaser",
+            "Three.js (WebGL)",
+            "OpenGL",
+            "Vulkan"
+        ],
+        "Languages": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "TypeScript",
+            "Python",
+            "PHP",
+            "Java",
+            "Kotlin",
+            "Swift",
+            "Objective-C",
+            "C",
+            "C++",
+            "C#",
+            "Go",
+            "Rust",
+            "Ruby",
+            "Scala",
+            "R",
+            "Dart",
+            "Lua",
+            "Perl",
+            "Elixir",
+            "Erlang",
+            "Haskell",
+            "Clojure",
+            "F#",
+            "OCaml",
+            "Julia",
+            "MATLAB",
+            "SQL",
+            "Bash",
+            "PowerShell"
+        ]
+    },
+    "Project & Product": {
+        "Product Management": [
+            "PRD",
+            "User Stories",
+            "Acceptance Criteria",
+            "Roadmap",
+            "Prioritization (RICE, MoSCoW)",
+            "GTM Strategy",
+            "Product Analytics"
+        ],
+        "Project Management": [
+            "Agile/Scrum",
+            "Kanban",
+            "Jira",
+            "Trello",
+            "Asana",
+            "ClickUp",
+            "Notion"
+        ],
+        "Strategy Frameworks": [
+            "OKR",
+            "SWOT",
+            "Porter 5 Forces (concept)",
+            "Unit Economics (concept)"
+        ]
+    },
+    "Sales CRM Customer Success": {
+        "CRM": [
+            "HubSpot",
+            "Salesforce",
+            "Pipedrive",
+            "Zoho CRM"
+        ],
+        "Customer Support": [
+            "Zendesk",
+            "Freshdesk",
+            "Intercom",
+            "Help Center/KB"
+        ],
+        "Sales Methods": [
+            "BANT",
+            "MEDDIC",
+            "SPIN Selling (concept)"
+        ]
+    },
+    "Security": {
+        "AppSec Basics": [
+            "OWASP Top 10",
+            "SQL Injection",
+            "XSS",
+            "CSRF",
+            "CORS",
+            "SSRF",
+            "Rate Limiting",
+            "Input Validation"
+        ],
+        "Auth Access": [
+            "OAuth 2.0",
+            "OIDC",
+            "SAML",
+            "MFA",
+            "RBAC/ABAC",
+            "Secrets Management"
+        ],
+        "Secure Tooling": [
+            "SAST (concept)",
+            "DAST (concept)",
+            "Dependency Scanning (concept)",
+            "Container Scanning (concept)"
+        ]
+    },
+    "Testing QA": {
+        "Backend Testing": [
+            "PyTest",
+            "JUnit",
+            "TestNG",
+            "PHPUnit",
+            "Postman Tests"
+        ],
+        "Practices": [
+            "Unit Testing",
+            "Integration Testing",
+            "E2E Testing",
+            "Regression Testing",
+            "Performance Testing"
+        ],
+        "Web Testing": [
+            "Jest",
+            "Vitest",
+            "Mocha/Chai",
+            "Cypress",
+            "Playwright",
+            "Selenium"
+        ]
+    }
+}

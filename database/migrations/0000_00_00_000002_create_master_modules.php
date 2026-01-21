@@ -97,6 +97,32 @@ return new class extends Migration
 
             $table->index('order');
         });
+        Schema::create('schools', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('degree_id')
+                ->nullable()                 // ✅ wajib kalau pakai nullOnDelete()
+                ->constrained('degrees')
+                ->nullOnDelete();
+            $table->string('code')->nullable();
+            $table->string('npsn')->nullable();
+            $table->foreignId('state_id')
+                ->nullable()                 // ✅ wajib kalau pakai nullOnDelete()
+                ->constrained('states')
+                ->nullOnDelete();
+            $table->foreignId('city_id')
+                ->nullable()                 // ✅ wajib kalau pakai nullOnDelete()
+                ->constrained('cities')
+                ->nullOnDelete();
+            $table->foreignId('subdistrict_id')
+                ->nullable()                 // ✅ wajib kalau pakai nullOnDelete()
+                ->constrained('subdistricts')
+                ->nullOnDelete();
+            $table->string('name')->nullable();
+            $table->longText('address')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
+            $table->timestamps();
+        });
 
 
 

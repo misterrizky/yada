@@ -8,9 +8,6 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class TagSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $tags = [
@@ -307,6 +304,6 @@ class TagSeeder extends Seeder
             // $t->order_column; //returns 1
             $t->save();
         }
-        
+
     }
 }
