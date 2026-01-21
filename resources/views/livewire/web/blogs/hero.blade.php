@@ -1,6 +1,6 @@
 <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
-<div class="bg-white dark:bg-black">
+<div class="bg-white dark:bg-black overflow-x-hidden">
     <!-- Header -->
     <main class="isolate pb-32">
         <!-- Hero section -->

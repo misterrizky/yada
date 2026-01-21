@@ -108,10 +108,9 @@ name('web.solutions.agile-development');
                 <div class="relative flex items-center justify-center">
                     <!-- LEFT IMAGE -->
                     <div class="relative w-full max-w-[560px]">
-                        <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=1600&auto=format&fit=crop"
-                            alt="Team" class="h-[560px] w-full object-cover lg:h-[660px]" />
+                        <img src="{{ asset('assets/media/services-detail/cs2.png') }}"
+                            alt="Team" class="h-[560px] w-full object-cover lg:h-[660px] " />
                     </div>
-
                     <!-- RIGHT CARD (OVERLAP) -->
                     <div
                         class="relative -ml-16 w-full max-w-[560px] bg-white dark:bg-black px-10 py-12 shadow-[0_14px_40px_rgba(0,0,0,0.14)] lg:-ml-24 lg:mt-0">

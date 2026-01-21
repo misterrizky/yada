@@ -35,7 +35,7 @@ name('web.solutions.managed-services');
                 <polygon points="100,100 10,100 50,0 100,0" />
             </svg>
 
-            <img src="{{ asset('assets/media/solutions/managed-it-services.jpg') }}"
+            <img src="{{ asset('assets/media/services-detail/design.png') }}"
                 alt="Agile Development" class="aspect-3/2 object-cover lg:aspect-auto lg:size-full" />
         </div>
     </div>
