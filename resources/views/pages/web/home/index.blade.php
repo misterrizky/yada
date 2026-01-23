@@ -4,37 +4,41 @@ use function Laravel\Folio\name;
 
 name('web.home');
 ?>
-<x-layouts.web :title="__('YE - Software Company in Indonesia')" :description="__('YE delivers full-service software, AI, QA, and cloud solutions to modernize and grow your business.')" :keywords="__('Software Company in Indonesia, AI, QA, and cloud solutions, modernize and grow your business')" :keywords="__('software development, it services')">
+<x-layouts.web :title="__('YE - Software Company in Indonesia')" :description="__('YE delivers full-service software, AI, QA, and cloud solutions to modernize and grow your business.')" :keywords="__('Software Company in Indonesia, AI, QA, and cloud solutions, modernize and grow your business')">
 
-    <section>
-        <livewire:web.home.hero />
-    </section>
+    <main id="main" class="min-h-screen">
 
-    <section class="gsap-fade-up">
-        <livewire:web.shared.featured-project />
-    </section>
+        <section>
+            <livewire:web.home.hero />
+        </section>
 
-    <section class="gsap-fade-up">
-        <livewire:web.shared.about />
-    </section>
+        <section class="gsap-fade-up">
+            <livewire:web.shared.featured-project />
+        </section>
+
+        <section class="gsap-fade-up">
+            <livewire:web.shared.about />
+        </section>
 
         <livewire:web.home.solution />
 
-    <section class="gsap-fade-up">
-        <livewire:web.shared.testimonial />
-    </section>
+        <section class="gsap-fade-up">
+            <livewire:web.shared.testimonial />
+        </section>
 
-    <section class="gsap-fade-up">
-        <livewire:web.shared.client-cloud />
-    </section>
+        <section class="gsap-fade-up">
+            <livewire:web.shared.client-cloud />
+        </section>
 
-    <section class="gsap-fade-up">
-        <livewire:web.shared.blog />
-    </section>
+        <section class="gsap-fade-up">
+            <livewire:web.shared.blog />
+        </section>
 
-    <section class="gsap-fade-up">
-        <livewire:web.shared.cta />
-    </section>
+        <section class="gsap-fade-up">
+            <livewire:web.shared.cta />
+        </section>
+
+    </main>
 
 </x-layouts.web>
 <script>
@@ -112,8 +116,10 @@ name('web.home');
             try {
                 gsap.registerPlugin(ScrollTrigger);
 
-                // Kill old triggers (important for SPA / Livewire)
-                ScrollTrigger.getAll().forEach(t => t.kill());
+                // Only kill triggers created by this page module (do not nuke global triggers)
+                window.__yexHomeTriggers = window.__yexHomeTriggers || [];
+                window.__yexHomeTriggers.forEach(t => t.kill && t.kill());
+                window.__yexHomeTriggers = [];
 
                 // ==============================
                 // PREPARE SPLIT TEXT
@@ -244,7 +250,7 @@ name('web.home');
                 });
 
                 // ==============================
-                // SPLIT TEXT ANIMATION (NEW)
+                // SPLIT TEXT ANIMATION
                 // ==============================
                 gsap.utils.toArray(".split-text").forEach(el => {
                     const chars = el.querySelectorAll(".split-char");
@@ -266,6 +272,7 @@ name('web.home');
                         }
                     });
                 });
+
                 gsap.utils.toArray(".split-text-desc").forEach(el => {
                     const chars = el.querySelectorAll(".split-char");
 
@@ -301,38 +308,27 @@ name('web.home');
     });
 
     // ==============================
-    // If using Livewire / SPA / Turbo
+    // Livewire navigation
     // ==============================
     document.addEventListener("livewire:navigated", () => {
         setTimeout(() => initGsap(), 50);
     });
 
-    document.addEventListener("turbo:load", () => {
-        setTimeout(() => initGsap(), 50);
-    });
-
     // ==============================
-    // Fallback
-    // ==============================
-    if (document.readyState !== 'loading') {
-        initGsap();
-    }
-
-    // ==============================
-    // APPLY RANDOM GSAP ANIMATIONS TO BRAND LOGOS
+    // APPLY RANDOM GSAP ANIMATIONS TO BRAND LOGOS (once)
     // ==============================
     function applyRandomAnimationsToLogos() {
         const animationTypes = ['gsap-fade-up', 'gsap-fade-down', 'gsap-fade-left', 'gsap-fade-right'];
         const logos = document.querySelectorAll('.brand-logo-item');
 
-        logos.forEach((logo, index) => {
-            // Assign random animation class
+        logos.forEach((logo) => {
+            if (logo.dataset.yexRandApplied === "1") return;
+            logo.dataset.yexRandApplied = "1";
             const randomAnimation = animationTypes[Math.floor(Math.random() * animationTypes.length)];
             logo.classList.add(randomAnimation);
         });
     }
 
-    // Apply random animations setelah DOM ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
@@ -346,7 +342,6 @@ name('web.home');
         }, 100);
     }
 
-    // Apply when Livewire navigates
     document.addEventListener('livewire:navigated', () => {
         setTimeout(() => {
             applyRandomAnimationsToLogos();
