@@ -23,7 +23,7 @@ new class extends Component {
 
         session()->put('auth.password_confirmed_at', time());
 
-        $this->redirectIntended(default: route('app.dashboard', absolute: false), navigate: true);
+        $this->redirectIntended(default: config('fortify.home', '/dashboard'), navigate: true);
     }
 }; ?>
 

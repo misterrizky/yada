@@ -123,7 +123,7 @@ $signup = function (CreatesNewUsers $creator) use ($rulesForStep): Redirector {
         $company->created_by = $user->id;
         $company->updated_by = $user->id;
         $company->save();
-        
+
         $user->company()->associate($company);
         $user->save();
 
@@ -350,7 +350,7 @@ $updatedCompanyState = function(){
                             </flux:button>
                         </div>
                     @endif
-                    
+
                     @if ($step === 5 && $account_type === '1')
                         <flux:input
                             wire:model="company_name"

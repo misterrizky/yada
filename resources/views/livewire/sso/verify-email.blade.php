@@ -7,7 +7,7 @@ new class extends Component {
     public function resend(): void
     {
         if (Auth::user()->hasVerifiedEmail()) {
-            $this->redirectIntended(default: route('app.dashboard', absolute: false), navigate: true);
+            $this->redirectIntended(default: config('fortify.home', '/dashboard'), navigate: true);
 
             return;
         }

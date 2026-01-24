@@ -51,7 +51,7 @@ new class extends Component {
 
             session()->forget(['login.id', 'login.remember']);
 
-            $this->redirectIntended(default: route('app.dashboard', absolute: false), navigate: true);
+            $this->redirectIntended(default: config('fortify.home', '/dashboard'), navigate: true);
         } else {
             event(new TwoFactorAuthenticationFailed($user));
 

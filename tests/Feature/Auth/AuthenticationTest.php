@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
     public function test_login_screen_can_be_rendered(): void
     {
-        $response = $this->get(route('sso.sign-in'));
+        $response = $this->get(route('login'));
 
         $response->assertStatus(200);
     }
@@ -29,7 +29,7 @@ class AuthenticationTest extends TestCase
 
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect(route('dashboard', absolute: false));
+            ->assertRedirect(config('fortify.home', '/dashboard'));
 
         $this->assertAuthenticated();
     }
@@ -66,7 +66,7 @@ class AuthenticationTest extends TestCase
             'password' => 'password',
         ]);
 
-        $response->assertRedirect(route('sso.two-fa'));
+        $response->assertRedirect(route('two-factor.login'));
         $this->assertGuest();
     }
 
@@ -76,7 +76,7 @@ class AuthenticationTest extends TestCase
 
         $response = $this->actingAs($user)->post(route('logout'));
 
-        $response->assertRedirect(route('home'));
+        $response->assertRedirect('/');
 
         $this->assertGuest();
     }
