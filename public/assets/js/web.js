@@ -1,6 +1,12 @@
 (() => {
     if (typeof window === "undefined") return;
-    if (window.location.origin !== "http://yex.co.id" || window.location.origin !== "https://yex.co.id") return;
+    const allowedOrigins = new Set([
+        "http://yex.co.id",
+        "https://yex.co.id",
+        "http://yada.test",
+        "https://yada.test",
+    ]);
+    if (!allowedOrigins.has(window.location.origin)) return;
 
     // Footer year (optional)
     let yearEl = null;

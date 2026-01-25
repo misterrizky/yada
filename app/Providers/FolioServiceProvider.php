@@ -20,18 +20,18 @@ class FolioServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Folio::domain('yada.test')->path(resource_path('views/pages/apps'))->middleware([
+        Folio::domain('yex.co.id')->path(resource_path('views/pages/apps'))->middleware([
             '*' => [
                 'auth',
                 'verified',
             ],
         ]);
-        Folio::domain('yada.test')->path(resource_path('views/pages/sso'))->middleware([
+        Folio::domain('yex.co.id')->path(resource_path('views/pages/sso'))->middleware([
             '*' => [
                 //
             ],
         ]);
-        Folio::domain('yex.co.id')->path(resource_path('views/pages/web'))->middleware([
+        Folio::domain('yada.test')->path(resource_path('views/pages/web'))->middleware([
             '*' => [
                 //
             ],
