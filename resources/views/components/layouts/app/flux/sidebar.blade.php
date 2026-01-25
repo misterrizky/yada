@@ -8,9 +8,7 @@
         <x-layouts.app.flux.partials.sidebar.header/>
         <!-- Mobile User Menu -->
         <x-layouts.app.flux.partials.mobile/>
-        <flux:main>
-            {{ $slot }}
-        </flux:main>
+        {{ $slot }}
         @fluxScripts
     </body>
 </html>

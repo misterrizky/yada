@@ -1,0 +1,75 @@
+<?php
+
+namespace Tests\Feature;
+
+use App\Models\Regional\Country;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Volt\Volt;
+use PHPUnit\Framework\Attributes\DataProvider;
+use Tests\TestCase;
+
+class CountryIndexSearchTest extends TestCase
+{
+    use RefreshDatabase;
+
+    #[DataProvider('searchProvider')]
+    public function test_country_index_search_filters_results(string $search, string $expectedName, string $unexpectedName): void
+    {
+        $this->seedCountries();
+        $user = User::factory()->create();
+
+        Volt::actingAs($user)
+            ->test('apps.master.regional.country.index')
+            ->set('search', $search)
+            ->assertSee($expectedName)
+            ->assertDontSee($unexpectedName);
+    }
+
+    public function test_country_index_includes_loading_skeleton_markup(): void
+    {
+        $user = User::factory()->create();
+
+        Volt::actingAs($user)
+            ->test('apps.master.regional.country.index')
+            ->assertSee('wire:loading', false)
+            ->assertSee('wire:loading.remove', false);
+    }
+
+    /**
+     * @return array<int, array{0: string, 1: string, 2: string}>
+     */
+    public static function searchProvider(): array
+    {
+        return [
+            ['AA', 'AlphaLand', 'BetaRepublic'],
+            ['Beta', 'BetaRepublic', 'AlphaLand'],
+            ['777', 'AlphaLand', 'BetaRepublic'],
+            ['SouthRealm', 'BetaRepublic', 'AlphaLand'],
+            ['NorthwestReach', 'AlphaLand', 'BetaRepublic'],
+        ];
+    }
+
+    private function seedCountries(): void
+    {
+        $alpha = new Country;
+        $alpha->iso2 = 'AA';
+        $alpha->name = 'AlphaLand';
+        $alpha->status = 1;
+        $alpha->phone_code = '777';
+        $alpha->iso3 = 'AAA';
+        $alpha->region = 'NorthRealm';
+        $alpha->subregion = 'NorthwestReach';
+        $alpha->save();
+
+        $beta = new Country;
+        $beta->iso2 = 'BB';
+        $beta->name = 'BetaRepublic';
+        $beta->status = 1;
+        $beta->phone_code = '888';
+        $beta->iso3 = 'BBB';
+        $beta->region = 'SouthRealm';
+        $beta->subregion = 'SoutheastReach';
+        $beta->save();
+    }
+}

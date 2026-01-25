@@ -1,11 +1,11 @@
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="CRM" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="building-office-2" heading="CRM" class="grid">
     <flux:sidebar.item href="#">Companies</flux:sidebar.item>
     <flux:sidebar.item href="#">Company Addresses</flux:sidebar.item>
     <flux:sidebar.item href="#">Company Contacts</flux:sidebar.item>
     <flux:sidebar.item href="#">Leads</flux:sidebar.item>
     <flux:sidebar.item href="#">Lost Reasons</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="Sales" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="shopping-cart" heading="Sales" class="grid">
     <flux:sidebar.item href="#">Product Categories</flux:sidebar.item>
     <flux:sidebar.item href="#">Product Units</flux:sidebar.item>
     <flux:sidebar.item href="#">Products</flux:sidebar.item>
@@ -18,7 +18,7 @@
     <flux:sidebar.item href="#">Orders</flux:sidebar.item>
     <flux:sidebar.item href="#">Order Items</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="Project" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="clipboard-document-list" heading="Project" class="grid">
     <flux:sidebar.item href="#">Solution Categories</flux:sidebar.item>
     <flux:sidebar.item href="#">Solution Units</flux:sidebar.item>
     <flux:sidebar.item href="#">Solutions</flux:sidebar.item>
@@ -36,7 +36,7 @@
     <flux:sidebar.item href="#">Sub Tasks</flux:sidebar.item>
     <flux:sidebar.item href="#">Timesheets</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="Finance" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="banknotes" heading="Finance" class="grid">
     <flux:sidebar.item href="#">Payment Methods</flux:sidebar.item>
     <flux:sidebar.item href="#">Bank Accounts</flux:sidebar.item>
     <flux:sidebar.item href="#">Invoices</flux:sidebar.item>
@@ -52,7 +52,7 @@
     <flux:sidebar.item href="#">Budgets</flux:sidebar.item>
     <flux:sidebar.item href="#">Transactions</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="Support" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="lifebuoy" heading="Support" class="grid">
     <flux:sidebar.item href="#">Compliance Checklists</flux:sidebar.item>
     <flux:sidebar.item href="#">Compliance Checklist Items</flux:sidebar.item>
     <flux:sidebar.item href="#">Compliance Reviews</flux:sidebar.item>
@@ -74,13 +74,13 @@
     <flux:sidebar.item href="#">Knowledge Base Articles</flux:sidebar.item>
     <flux:sidebar.item href="#">Contact Messages</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="DMS" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="folder" heading="DMS" class="grid">
     <flux:sidebar.item href="#">Documents</flux:sidebar.item>
     <flux:sidebar.item href="#">Document Versions</flux:sidebar.item>
     <flux:sidebar.item href="#">Document Templates</flux:sidebar.item>
     <flux:sidebar.item href="#">Template Variables</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="CMS" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="newspaper" heading="CMS" class="grid">
     <flux:sidebar.item href="#">Pages</flux:sidebar.item>
     <flux:sidebar.item href="#">Post Categories</flux:sidebar.item>
     <flux:sidebar.item href="#">Posts</flux:sidebar.item>
@@ -88,7 +88,7 @@
     <flux:sidebar.item href="#">Menus</flux:sidebar.item>
     <flux:sidebar.item href="#">Menu Items</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="HR" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="briefcase" heading="HR" class="grid">
     <flux:sidebar.item href="#">Departments</flux:sidebar.item>
     <flux:sidebar.item href="#">Designations</flux:sidebar.item>
     <flux:sidebar.item href="#">Designation Ratecards</flux:sidebar.item>
@@ -103,7 +103,7 @@
     <flux:sidebar.item href="#">Payrolls</flux:sidebar.item>
     <flux:sidebar.item href="#">Payroll Items</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="Resource" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="square-3-stack-3d" heading="Resource" class="grid">
     <flux:sidebar.item href="#">Resource Skills</flux:sidebar.item>
     <flux:sidebar.item href="#">Resource Allocations</flux:sidebar.item>
     <flux:sidebar.item href="#">Resource Requests</flux:sidebar.item>
@@ -112,7 +112,7 @@
     <flux:sidebar.item href="#">Team Compositions</flux:sidebar.item>
     <flux:sidebar.item href="#">Team Composition Members</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="Procurement" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="truck" heading="Procurement" class="grid">
     <flux:sidebar.item href="#">Vendor Categories</flux:sidebar.item>
     <flux:sidebar.item href="#">Vendors</flux:sidebar.item>
     <flux:sidebar.item href="#">Vendor Contacts</flux:sidebar.item>
@@ -125,7 +125,7 @@
     <flux:sidebar.item href="#">Goods Receipt Items</flux:sidebar.item>
     <flux:sidebar.item href="#">Vendor Evaluations</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="Asset" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="cube" heading="Asset" class="grid">
     <flux:sidebar.item href="#">Asset Categories</flux:sidebar.item>
     <flux:sidebar.item href="#">Asset Locations</flux:sidebar.item>
     <flux:sidebar.item href="#">Assets</flux:sidebar.item>
@@ -137,7 +137,7 @@
     <flux:sidebar.item href="#">Stock Adjustments</flux:sidebar.item>
     <flux:sidebar.item href="#">Stock Adjustment Items</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="QA" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="check-badge" heading="QA" class="grid">
     <flux:sidebar.item href="#">QA Checklists</flux:sidebar.item>
     <flux:sidebar.item href="#">QA Checklist Items</flux:sidebar.item>
     <flux:sidebar.item href="#">QA Reviews</flux:sidebar.item>
@@ -146,14 +146,14 @@
     <flux:sidebar.item href="#">Delivery Signoffs</flux:sidebar.item>
     <flux:sidebar.item href="#">Delivery Signoff Items</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="Approval" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="check-circle" heading="Approval" class="grid">
     <flux:sidebar.item href="#">Approvals</flux:sidebar.item>
     <flux:sidebar.item href="#">Approval Workflows</flux:sidebar.item>
     <flux:sidebar.item href="#">Approval Workflow Steps</flux:sidebar.item>
     <flux:sidebar.item href="#">Approval Requests</flux:sidebar.item>
     <flux:sidebar.item href="#">Approval Actions</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="Users" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="users" heading="Users" class="grid">
     <flux:sidebar.item href="#">Users</flux:sidebar.item>
     <flux:sidebar.item href="#">User Types</flux:sidebar.item>
     <flux:sidebar.item href="#">User Addresses</flux:sidebar.item>
@@ -171,7 +171,7 @@
     <flux:sidebar.item href="#">Activities</flux:sidebar.item>
     <flux:sidebar.item href="#">Activity Relations</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="Master Data" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="circle-stack" heading="Master Data" class="grid">
     <flux:sidebar.item href="#">Ratecard Catalogs</flux:sidebar.item>
     <flux:sidebar.item href="#">Banks</flux:sidebar.item>
     <flux:sidebar.item href="#">Pipelines</flux:sidebar.item>
@@ -187,8 +187,8 @@
     <flux:sidebar.item href="#">Sources</flux:sidebar.item>
     <flux:sidebar.item href="#">Tax Rates</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="Regional" class="grid">
-    <flux:sidebar.item href="#">Countries</flux:sidebar.item>
+<flux:sidebar.group expandable :expanded="false" icon="globe-alt" heading="Regional" class="grid">
+    <flux:sidebar.item :href="route('app.country')" :current="request()->routeIs('dashboard')" wire:navigate>Countries</flux:sidebar.item>
     <flux:sidebar.item href="#">States</flux:sidebar.item>
     <flux:sidebar.item href="#">Cities</flux:sidebar.item>
     <flux:sidebar.item href="#">Subdistricts</flux:sidebar.item>
@@ -197,7 +197,7 @@
     <flux:sidebar.item href="#">Languages</flux:sidebar.item>
     <flux:sidebar.item href="#">Timezones</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="Achievements" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="trophy" heading="Achievements" class="grid">
     <flux:sidebar.item href="#">Levels</flux:sidebar.item>
     <flux:sidebar.item href="#">Experiences</flux:sidebar.item>
     <flux:sidebar.item href="#">Experience Audits</flux:sidebar.item>
@@ -207,14 +207,14 @@
     <flux:sidebar.item href="#">Streaks</flux:sidebar.item>
     <flux:sidebar.item href="#">Streak Histories</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="RBAC" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="key" heading="RBAC" class="grid">
     <flux:sidebar.item href="#">Roles</flux:sidebar.item>
     <flux:sidebar.item href="#">Permissions</flux:sidebar.item>
     <flux:sidebar.item href="#">Model Has Roles</flux:sidebar.item>
     <flux:sidebar.item href="#">Model Has Permissions</flux:sidebar.item>
     <flux:sidebar.item href="#">Role Has Permissions</flux:sidebar.item>
 </flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="home" heading="System" class="grid">
+<flux:sidebar.group expandable :expanded="false" icon="cpu-chip" heading="System" class="grid">
     <flux:sidebar.item href="#">Cache</flux:sidebar.item>
     <flux:sidebar.item href="#">Cache Locks</flux:sidebar.item>
     <flux:sidebar.item href="#">Jobs</flux:sidebar.item>
