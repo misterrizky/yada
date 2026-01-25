@@ -1,6 +1,6 @@
 (() => {
     if (typeof window === "undefined") return;
-    if (window.location.origin !== "http://yex.co.id" || window.location.origin !== "https://yex.co.id" || window.location.origin !== "http://yada.test" || window.location.origin !== "https://yada.test") return;
+    if (window.location.origin !== "http://yex.co.id" || window.location.origin !== "https://yex.co.id") return;
 
     // Footer year (optional)
     let yearEl = null;
