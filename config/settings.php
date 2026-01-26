@@ -2,6 +2,20 @@
 
 use App\Settings\AppSettings;
 use App\Settings\AuthSettings;
+use App\Settings\CompanySettings;
+use App\Settings\ContractSettings;
+use App\Settings\EmailSettings;
+use App\Settings\FinanceSettings;
+use App\Settings\GdprSettings;
+use App\Settings\HrSettings;
+use App\Settings\LeadSettings;
+use App\Settings\MessageSettings;
+use App\Settings\NotificationSettings;
+use App\Settings\ProjectSettings;
+use App\Settings\SecuritySettings;
+use App\Settings\TaskSettings;
+use App\Settings\TaxSettings;
+use App\Settings\TicketSettings;
 
 return [
 
@@ -11,7 +25,21 @@ return [
      */
     'settings' => [
         AppSettings::class,
-        AuthSettings::class
+        AuthSettings::class,
+        CompanySettings::class,
+        ContractSettings::class,
+        EmailSettings::class,
+        FinanceSettings::class,
+        GdprSettings::class,
+        HrSettings::class,
+        LeadSettings::class,
+        MessageSettings::class,
+        NotificationSettings::class,
+        ProjectSettings::class,
+        SecuritySettings::class,
+        TaskSettings::class,
+        TaxSettings::class,
+        TicketSettings::class,
     ],
 
     /*
