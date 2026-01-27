@@ -22,9 +22,6 @@ AOS.init();
         root.setAttribute("data-theme", theme);
     };
 
-    // Apply theme sekali (persist via localStorage)
-    applyTheme(getInitialTheme());
-
     // Event delegation: tetap jalan meski Livewire navigasi & DOM berganti
     document.addEventListener("click", (e) => {
         const toggleButton = e.target.closest("[data-theme-toggle]");
@@ -37,8 +34,9 @@ AOS.init();
         localStorage.setItem(storageKey, nextTheme);
     });
     function initGallery(){
+        if (!document.querySelector(".gallerySlider")) return;
         const swiper = new Swiper(".gallerySlider", {
-    
+
             centeredSlides: true,
             loop: true,
             spaceBetween: 20,
@@ -65,12 +63,13 @@ AOS.init();
                 768: {
                     slidesPerView: 2,
                 },
-            
+
             },
 
         });
     }
     function initCards() {
+        if (!document.querySelector(".card-item")) return;
         document.querySelectorAll(".card-item").forEach((card) => {
             if (card.dataset.cardBound) return;
             card.dataset.cardBound = "1";
@@ -84,9 +83,13 @@ AOS.init();
         });
     }
     function horizontalText(){
+        if (typeof gsap === 'undefined' || typeof SplitText === 'undefined') {
+            return;
+        }
         gsap.registerPlugin(SplitText);
         let wrapper = document.querySelector(".Horizontal");
         let text = document.querySelector(".Horizontal__text");
+        if (!wrapper || !text) return;
         let split = SplitText.create(".Horizontal__text", { type: "chars, words" });
 
         const scrollTween = gsap.to(text, {
@@ -114,28 +117,6 @@ AOS.init();
             });
         });
     }
-    function homeHeroTitle() {
-        const title = document.getElementById("hero-title");
-        if (!title) return;
-
-        const words = title.innerText.trim().split(/\s+/);
-
-        title.innerHTML = words
-            .map(word => `<span class="inline-block opacity-0">${word}</span>`)
-            .join(" ");
-
-        gsap.fromTo(
-            "#hero-title span",
-            { opacity: 0, y: 30 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                stagger: 0.08,
-                ease: "power3.out",
-            }
-        );
-    }
     function initThemeToggle() {
         const btn = document.querySelector("[data-theme-toggle]");
         if (!btn || btn.dataset.bound) return;
@@ -143,18 +124,45 @@ AOS.init();
 
         btn.addEventListener("click", () => { /* toggle theme */ });
     }
-    document.addEventListener("livewire:navigated", () =>{
+
+    const hostname = window.location.hostname;
+    const isWeb = hostname === 'yex.co.id' || hostname.includes('yex.co.id');
+    const isApp = hostname === 'app.yex.co.id' || hostname === 'yada.test';
+    const isSSO = hostname === 'sso.yex.co.id';
+
+    function initCommon() {
+        AOS.init();
+        applyTheme(getInitialTheme());
+    }
+
+    function initWeb() {
         horizontalText();
         homeHeroTitle();
         initGallery();
         initCards();
+    }
+
+    function initApp() {
         initThemeToggle();
-    });
-    document.addEventListener("DOMContentLoaded", () =>{
-        horizontalText();
-        homeHeroTitle();
-        initGallery();
-        initCards();
-        initThemeToggle();
-    });
+    }
+
+    function initSSO() {
+        // SSO specific JS if any
+    }
+
+    function runInit() {
+        initCommon();
+        if (isWeb) {
+            initWeb();
+        }
+        if (isApp) {
+            initApp();
+        }
+        if (isSSO) {
+            initSSO();
+        }
+    }
+
+    document.addEventListener("livewire:navigated", runInit);
+    document.addEventListener("DOMContentLoaded", runInit);
 })();

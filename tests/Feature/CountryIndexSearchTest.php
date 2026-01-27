@@ -13,6 +13,13 @@ class CountryIndexSearchTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        config(['app.debug' => false]);
+    }
+
     #[DataProvider('searchProvider')]
     public function test_country_index_search_filters_results(string $search, string $expectedName, string $unexpectedName): void
     {
@@ -34,6 +41,39 @@ class CountryIndexSearchTest extends TestCase
             ->test('apps.master.regional.country.index')
             ->assertSee('wire:loading', false)
             ->assertSee('wire:loading.remove', false);
+    }
+
+    public function test_country_index_renders_notification_component(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)
+            ->get(route('app.country'))
+            ->assertOk()
+            ->assertSeeLivewire('apps.shared.notification.form');
+    }
+
+    public function test_country_index_deletes_country(): void
+    {
+        $user = User::factory()->create();
+        $country = new Country;
+        $country->iso2 = 'ID';
+        $country->name = 'Indonesia';
+        $country->status = 1;
+        $country->phone_code = '62';
+        $country->iso3 = 'IDN';
+        $country->region = 'Asia';
+        $country->subregion = 'South East Asia';
+        $country->save();
+
+        Volt::actingAs($user)
+            ->test('apps.master.regional.country.index')
+            ->call('deleteCountry', $country->id)
+            ->assertHasNoErrors();
+
+        $this->assertDatabaseMissing('countries', [
+            'id' => $country->id,
+        ]);
     }
 
     /**

@@ -3,8 +3,8 @@
     const allowedOrigins = new Set([
         "http://yex.co.id",
         "https://yex.co.id",
-        "http://yada.test",
-        "https://yada.test",
+        // "http://yada.test",
+        // "https://yada.test",
     ]);
     if (!allowedOrigins.has(window.location.origin)) return;
 

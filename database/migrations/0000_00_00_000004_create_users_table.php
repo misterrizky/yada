@@ -261,6 +261,17 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('user_filters', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')
+                ->nullable()                 // ✅ wajib kalau pakai nullOnDelete()
+                ->constrained('users')
+                ->nullOnDelete();
+            $table->string('key');
+            $table->json('value');
+            $table->timestamps();
+        });
+
         Schema::create('user_languages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')

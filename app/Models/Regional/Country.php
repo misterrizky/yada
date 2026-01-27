@@ -2,17 +2,29 @@
 
 namespace App\Models\Regional;
 
+use App\Models\Concerns\Searchable;
+use App\Models\CRM\CompanyAddress;
+use App\Models\Procurement\VendorAddress;
+use App\Models\User\UserAddress;
+use App\Models\User\UserProfile;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Models\CRM\ClientAddress;
-use App\Models\HR\Employee;
-use App\Models\Procurement\VendorAddress;
-use App\Models\User\UserAddress;
 
 class Country extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
+
+    protected $fillable = [
+        'iso2',
+        'iso3',
+        'name',
+        'phone_code',
+        'region',
+        'subregion',
+        'status',
+    ];
+
     public $timestamps = false;
 
     public function states(): HasMany
@@ -42,12 +54,12 @@ class Country extends Model
 
     public function clientAddresses(): HasMany
     {
-        return $this->hasMany(ClientAddress::class, 'country_id');
+        return $this->hasMany(CompanyAddress::class, 'country_id');
     }
 
     public function employees(): HasMany
     {
-        return $this->hasMany(Employee::class, 'country_id');
+        return $this->hasMany(UserProfile::class, 'country_id');
     }
 
     public function vendorAddresses(): HasMany

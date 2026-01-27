@@ -73,6 +73,8 @@
 
         {{ $slot }}
 
+        <livewire:apps.shared.notification.form />
+
         @fluxScripts
     </body>
 </html>

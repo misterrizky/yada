@@ -29,6 +29,8 @@ $signin = function () {
     }
 
     session()->regenerate();
+    $route = config('fortify.home', '/dashboard');
+    return $this->redirect($route, navigate: true);
 
     return redirect()->intended(config('fortify.home', '/dashboard'));
 };

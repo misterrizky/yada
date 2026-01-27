@@ -143,7 +143,8 @@ $signup = function (CreatesNewUsers $creator) use ($rulesForStep): Redirector {
 
     Auth::login($user);
 
-    return redirect()->intended('/onboarding');
+    $route = route('app.onboarding');
+    return $this->redirect($route, navigate: true);
 };
 $updatedCompanyCountry = function(){
     // dd($this->company_country);

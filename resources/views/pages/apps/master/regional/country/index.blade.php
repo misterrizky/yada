@@ -1,54 +1,141 @@
 <?php
-use function Laravel\Folio\name;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Livewire\Volt\Component;
-use Livewire\WithPagination;
 
+use App\Exports\CountryExport;
+use App\Models\Regional\Country;
+use App\Models\User\UserFilter;
+use App\Tables\CountryTable as TableConfig;
+use Maatwebsite\Excel\Facades\Excel;
+use function Laravel\Folio\name;
+use function Livewire\Volt\{computed, mount, on, state, usesPagination};
+
+usesPagination();
 name('app.country');
 
-new class extends Component {
-    use WithPagination;
-    
-    public string $search = '';
-    public string $sortBy = 'name';
-    public string $sortDirection = 'asc';
+state([
+    'search' => '',
+    'sortField' => '',
+    'sortDirection' => 'asc',
+    'regions' => [],
+    'subregions' => [],
+    'table' => fn () => new TableConfig,
+    'columns' => fn () => collect(TableConfig::columns())
+        ->map(fn ($col) => $col->toLivewire())
+        ->all(),
+    'searchableFields' => fn () => (new TableConfig)->searchableFields(),
+    'headerDropdownItems' => fn() => [['label' => 'Import Countries', 'icon' => 'arrow-up-tray', 'clickable' => false], ['label' => 'Export Countries', 'icon' => 'arrow-down-tray', 'clickable' => true, 'click' => 'country-export']],
+]);
 
-    public function sort(string $column): void {
-        if ($this->sortBy === $column) {
-            $this->sortDirection = $this->sortDirection === 'desc' ? 'asc' : 'desc';
-        } else {
-            $this->sortBy = $column;
-            $this->sortDirection = 'desc';
-        }
-    }
+$export = function () {
+    $rows = Country::query()
+        ->search($this->search, $this->searchableFields)
+        ->when($this->regions, fn ($q) => $q->whereIn('region', $this->regions))
+        ->when($this->subregions, fn ($q) => $q->whereIn('subregion', $this->subregions))
+        ->get();
 
-    public function updatedSearch(): void
-    {
-        $this->resetPage();
-    }
-    #[\Livewire\Attributes\Computed]
-    public function collections(): LengthAwarePaginator
-    {
-        $search = trim($this->search);
+    return Excel::download(new CountryExport($rows), 'countries.xlsx');
+};
 
-        return \App\Models\Regional\Country::query()
-            ->when($search !== '', function ($query) use ($search) {
-                $query->where(function ($query) use ($search) {
-                    $query->where('iso2', 'like', '%' . $search . '%')
-                        ->orWhere('name', 'like', '%' . $search . '%')
-                        ->orWhere('phone_code', 'like', '%' . $search . '%')
-                        ->orWhere('region', 'like', '%' . $search . '%')
-                        ->orWhere('subregion', 'like', '%' . $search . '%');
-                });
-            })
-            ->tap(fn ($query) => $this->sortBy ? $query->orderBy($this->sortBy, $this->sortDirection) : $query)
-            ->paginate(10);
+on(['country-saved' => function () {
+    // Refresh otomatis terjadi karena state berubah atau dipanggil ulang
+}, 'country-export' => $export]);
+
+mount(function () {
+    $filter = UserFilter::where('user_id', auth()->id())
+        ->where('key', 'countries_table')
+        ->first();
+
+    if ($filter) {
+        $this->search = $filter->value['search'] ?? '';
+        $this->regions = $filter->value['regions'] ?? [];
+        $this->subregions = $filter->value['subregions'] ?? [];
     }
-}
+});
+
+$updatedSearch = function () {
+    $this->resetPage();
+
+    UserFilter::updateOrCreate(
+        ['user_id' => auth()->id(), 'key' => 'countries_table'],
+        ['value' => [
+            'search' => $this->search,
+            'regions' => $this->regions,
+            'subregions' => $this->subregions,
+        ]]
+    );
+};
+
+$sortBy = function ($field) {
+    if ($this->sortField === $field) {
+        $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+        $this->sortField = $field;
+        $this->sortDirection = 'asc';
+    }
+};
+
+$deleteCountry = function (Country $country) {
+    $country->delete();
+
+    $this->dispatch(
+        'notify',
+        title: 'Country deleted',
+        message: 'The country has been successfully deleted.'
+    );
+};
+//$table = computed(fn() => (new TableConfig)->columns();
+//$columns = computed(fn() => (new TableConfig)->columns();
+$countries = computed(function () {
+    return Country::query()
+        ->search($this->search, $this->searchableFields)
+        ->when($this->regions, fn ($q) => $q->whereIn('region', $this->regions))
+        ->when($this->subregions, fn ($q) => $q->whereIn('subregion', $this->subregions))
+        ->when($this->sortField, fn ($q) =>
+        $q->orderBy($this->sortField, $this->sortDirection)
+        )
+        ->paginate(10);
+});
+
+$chartData = computed(fn () => Country::query()
+    ->when($this->regions, fn ($q) => $q->whereIn('region', $this->regions))
+    ->selectRaw('region, COUNT(*) as total')
+    ->groupBy('region')
+    ->orderBy('region')
+    ->get()
+);
 ?>
 <x-layouts.app :title="__('Regional : Country')">
-    @volt
+@volt
+    @php
+    use App\Tables\TableColumn;
+
+    $columns = collect($this->columns)
+        ->map(fn ($col) => TableColumn::fromLivewire($col))
+        ->all();
+    @endphp
     <flux:main>
+        @push('app-header-actions')
+            <div class="mx-5 flex items-center gap-2">
+                <flux:dropdown position="bottom" align="end">
+                    <flux:button icon="ellipsis-horizontal" variant="ghost" />
+                    <flux:menu>
+                        @foreach ($headerDropdownItems as $item)
+                            @if($item['clickable'] === true)
+                                <flux:menu.item icon="{{ $item['icon'] }}" x-on:click="Livewire.dispatch('{{ $item['click'] }}')">{{ $item['label'] }}</flux:menu.item>
+                            @else
+                            <flux:menu.item as="button" type="button" icon="{{ $item['icon'] }}">
+                                {{ $item['label'] }}
+                            </flux:menu.item>
+                            @endif
+                        @endforeach
+                    </flux:menu>
+                </flux:dropdown>
+                <flux:modal.trigger name="form-country" wire:click="$dispatch('country-create')">
+                    <flux:button size="sm" variant="primary" color="sky" icon="plus">
+                        Create Country
+                    </flux:button>
+                </flux:modal.trigger>
+            </div>
+        @endpush
         <flux:breadcrumbs>
             <flux:breadcrumbs.item href="#">Dashboard</flux:breadcrumbs.item>
             <flux:breadcrumbs.item href="#">Master</flux:breadcrumbs.item>
@@ -58,77 +145,38 @@ new class extends Component {
         <div class="flex flex-wrap items-center lg:items-end justify-between gap-5 pb-7.5">
             <div class="flex flex-col justify-center gap-2">
                 <flux:heading class="mt-5" size="xl" level="1">Country</flux:heading>
-                <div class="flex items-center flex-wrap gap-1.5 font-medium">
-                    <span class="text-base text-secondary-foreground">
-                        All Country:
-                    </span>
-                    <span class="text-base text-foreground font-medium me-2">
-                        49,053
-                    </span>
-                </div>
-            </div>
-            <div class="flex items-center gap-2.5">
-                <flux:input wire:model.live="search" size="lg" icon="magnifying-glass" kbd="⌘K" placeholder="Filter by..." clearable />
-                <flux:button variant="filled">Import CSV</flux:button>
-                <flux:button :href="route('app.country.create')" wire:navigate variant="primary" color="sky">Add Country</flux:button>
+                <flux:input
+                    wire:model.live.debounce.500ms="search"
+                    size="lg"
+                    icon="magnifying-glass"
+                    placeholder="Search..."
+                    clearable
+                />
             </div>
         </div>
         <flux:separator variant="subtle" />
-        <flux:context>
-            <div wire:loading wire:target="search,sort,gotoPage,nextPage,previousPage">
-                @include('livewire.apps.skeleton.table', [
-                    'columns' => ['Code', 'Name', 'Phone code', 'Region', 'Subregion', 'Status'],
-                ])
-            </div>
-            <flux:table wire:loading.remove wire:target="search,sort,gotoPage,nextPage,previousPage" :paginate="$this->collections">
-                <flux:table.columns>
-                    <flux:table.column sortable :sorted="$sortBy === 'iso2'" :direction="$sortDirection" wire:click="sort('iso2')">Code</flux:table.column>
-                    <flux:table.column sortable :sorted="$sortBy === 'name'" :direction="$sortDirection" wire:click="sort('name')">Name</flux:table.column>
-                    <flux:table.column sortable :sorted="$sortBy === 'phone_code'" :direction="$sortDirection" wire:click="sort('phone_code')">Phone code</flux:table.column>
-                    <flux:table.column sortable :sorted="$sortBy === 'region'" :direction="$sortDirection" wire:click="sort('region')">Region</flux:table.column>
-                    <flux:table.column sortable :sorted="$sortBy === 'subregion'" :direction="$sortDirection" wire:click="sort('subregion')">Subregion</flux:table.column>
-                    <flux:table.column sortable :sorted="$sortBy === 'status'" :direction="$sortDirection" wire:click="sort('status')">Status</flux:table.column>
-                </flux:table.columns>
-                <flux:table.rows>
-                    @foreach ($this->collections as $collection)
-                        <flux:table.row :key="$collection->id">
-                            <flux:table.cell class="flex items-center gap-3 strong">
-                                {{ $collection->iso2 }}
-                            </flux:table.cell>
-                            <flux:table.cell class="strong whitespace-nowrap">{{ $collection->name }}</flux:table.cell>
-                            <flux:table.cell variant="strong">{{ $collection->phone_code }}</flux:table.cell>
-                            <flux:table.cell variant="strong">{{ $collection->region }}</flux:table.cell>
-                            <flux:table.cell variant="strong">{{ $collection->subregion }}</flux:table.cell>
-                            @php
-                            $color = $collection->status == 1 ? 'lime' : 'red';
-                            $status = $collection->status == 1 ? 'Active' : 'Not Active';
-                            @endphp
-                            <flux:table.cell>
-                                <flux:badge size="sm" :color="$color" inset="top bottom">{{ $status }}</flux:badge>
-                            </flux:table.cell>
-                        </flux:table.row>
-                    @endforeach
-                </flux:table.rows>
-            </flux:table>
-            <flux:menu wire:loading.remove wire:target="search,sort,gotoPage,nextPage,previousPage">
-                <flux:menu.item icon="plus">New post</flux:menu.item>
-                <flux:menu.separator />
-                <flux:menu.submenu heading="Sort by">
-                    <flux:menu.radio.group>
-                        <flux:menu.radio checked>Name</flux:menu.radio>
-                        <flux:menu.radio>Date</flux:menu.radio>
-                        <flux:menu.radio>Popularity</flux:menu.radio>
-                    </flux:menu.radio.group>
-                </flux:menu.submenu>
-                <flux:menu.submenu heading="Filter">
-                    <flux:menu.checkbox checked>Draft</flux:menu.checkbox>
-                    <flux:menu.checkbox checked>Published</flux:menu.checkbox>
-                    <flux:menu.checkbox>Archived</flux:menu.checkbox>
-                </flux:menu.submenu>
-                <flux:menu.separator />
-                <flux:menu.item variant="danger" icon="trash">Delete</flux:menu.item>
-            </flux:menu>
-        </flux:context>
+        <div wire:loading wire:target="search,sort,gotoPage,nextPage,previousPage">
+            <x-app.skeleton.table
+                :columns="\App\Tables\CountryTable::columns()"
+                :rows="10"
+            />
+        </div>
+        {{--    <flux:card class="mb-4">--}}
+        {{--        <div x-data="regionChart(@json($this->chartData))" x-effect="render(@json($this->chartData))" class="h-64">--}}
+        {{--            <canvas x-ref="canvas"></canvas>--}}
+        {{--        </div>--}}
+        {{--    </flux:card>--}}
+        <div wire:loading.remove wire:target="search,sort,gotoPage,nextPage,previousPage">
+            <x-data-table
+                :columns="$columns"
+                :rows="$this->countries"
+                :sort-field="$this->sortField"
+                :sort-direction="$this->sortDirection"
+                sort-action="sortBy"
+                actions-view="pages.apps.master.regional.country.actions"
+            />
+        </div>
+        <livewire:apps.form.country/>
     </flux:main>
-    @endvolt
+@endvolt
 </x-layouts.app>
