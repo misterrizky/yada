@@ -172,6 +172,7 @@
     <flux:sidebar.item href="#">Activity Relations</flux:sidebar.item>
 </flux:sidebar.group>
 <flux:sidebar.group expandable :expanded="false" icon="circle-stack" heading="Master Data" class="grid">
+    <flux:sidebar.item :href="route('app.country')" :current="request()->routeIs('dashboard')" wire:navigate>Countries</flux:sidebar.item>
     <flux:sidebar.item href="#">Ratecard Catalogs</flux:sidebar.item>
     <flux:sidebar.item href="#">Banks</flux:sidebar.item>
     <flux:sidebar.item href="#">Pipelines</flux:sidebar.item>
@@ -186,16 +187,6 @@
     <flux:sidebar.item href="#">Skills</flux:sidebar.item>
     <flux:sidebar.item href="#">Sources</flux:sidebar.item>
     <flux:sidebar.item href="#">Tax Rates</flux:sidebar.item>
-</flux:sidebar.group>
-<flux:sidebar.group expandable :expanded="false" icon="globe-alt" heading="Regional" class="grid">
-    <flux:sidebar.item :href="route('app.country')" :current="request()->routeIs('dashboard')" wire:navigate>Countries</flux:sidebar.item>
-    <flux:sidebar.item href="#">States</flux:sidebar.item>
-    <flux:sidebar.item href="#">Cities</flux:sidebar.item>
-    <flux:sidebar.item href="#">Subdistricts</flux:sidebar.item>
-    <flux:sidebar.item href="#">Villages</flux:sidebar.item>
-    <flux:sidebar.item href="#">Currencies</flux:sidebar.item>
-    <flux:sidebar.item href="#">Languages</flux:sidebar.item>
-    <flux:sidebar.item href="#">Timezones</flux:sidebar.item>
 </flux:sidebar.group>
 <flux:sidebar.group expandable :expanded="false" icon="trophy" heading="Achievements" class="grid">
     <flux:sidebar.item href="#">Levels</flux:sidebar.item>

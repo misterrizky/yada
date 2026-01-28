@@ -53,6 +53,30 @@ class CountryIndexSearchTest extends TestCase
             ->assertSeeLivewire('apps.shared.notification.form');
     }
 
+    public function test_country_index_renders_header_dropdown_items(): void
+    {
+        $user = User::factory()->create();
+
+        Volt::actingAs($user)
+            ->test('apps.master.regional.country.index')
+            ->assertSee('Import Countries')
+            ->assertSee('Export Countries');
+    }
+
+    public function test_country_index_view_settings_can_hide_columns(): void
+    {
+        $user = User::factory()->create();
+
+        Volt::actingAs($user)
+            ->test('apps.master.regional.country.index')
+            ->call('openViewSettings')
+            ->set('viewSettingsDraft.visibleColumns', ['name'])
+            ->call('saveViewSettings')
+            ->assertSet('visibleColumns', ['name'])
+            ->assertSee('Action')
+            ->assertDontSee('Code');
+    }
+
     public function test_country_index_deletes_country(): void
     {
         $user = User::factory()->create();

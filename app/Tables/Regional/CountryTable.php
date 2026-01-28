@@ -1,6 +1,9 @@
 <?php
 
-namespace App\Tables;
+namespace App\Tables\Regional;
+
+use App\Tables\Table;
+use App\Tables\TableColumn;
 
 final class CountryTable extends Table
 {

@@ -94,6 +94,7 @@ final class TableColumn implements Wireable
             'label' => $this->label,
             'sortable' => $this->sortable,
             'searchable' => $this->searchable,
+            'toggleable' => $this->toggleable
         ];
     }
 
@@ -105,6 +106,7 @@ final class TableColumn implements Wireable
             label: $value['label'],
             sortable: $value['sortable'],
             searchable: $value['searchable'],
+            toggleable: $value['toggleable']
         );
     }
     public function render($row)

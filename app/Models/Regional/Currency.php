@@ -2,32 +2,44 @@
 
 namespace App\Models\Regional;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Models\CRM\Company;
-use App\Models\Finance\BankAccount;
-use App\Models\Finance\Budget;
-use App\Models\Finance\CreditNote;
-use App\Models\Finance\Expense;
-use App\Models\Finance\ExpenseClaim;
-use App\Models\Finance\Invoice;
-use App\Models\Finance\InvoiceRecurring;
-use App\Models\Finance\Payment;
-use App\Models\Finance\Transaction;
 use App\Models\PM\Project;
+use App\Models\CRM\Company;
+use App\Models\Sales\Order;
+use App\Models\Finance\Budget;
+use App\Models\Sales\Contract;
+use App\Models\Sales\Proposal;
+use App\Models\Finance\Expense;
+use App\Models\Finance\Invoice;
+use App\Models\Finance\Payment;
+use App\Models\Sales\Quotation;
+use App\Models\Finance\CreditNote;
+use App\Models\Procurement\Vendor;
+use App\Models\Concerns\Searchable;
+use App\Models\Finance\BankAccount;
+use App\Models\Finance\Transaction;
+use App\Models\Finance\ExpenseClaim;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Finance\InvoiceRecurring;
 use App\Models\Procurement\PurchaseOrder;
 use App\Models\Procurement\PurchaseRequest;
-use App\Models\Procurement\Vendor;
-use App\Models\Sales\Contract;
-use App\Models\Sales\Order;
-use App\Models\Sales\Proposal;
-use App\Models\Sales\Quotation;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Currency extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
+    protected $fillable = [
+        'country_id',
+        'name',
+        'code',
+        'precision',
+        'symbol',
+        'symbol_native',
+        'symbol_first',
+        'decimal_mark',
+        'thousand_separator',
+    ];
     public $timestamps = false;
 
     public function country(): BelongsTo
