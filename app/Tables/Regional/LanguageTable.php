@@ -5,7 +5,7 @@ namespace App\Tables\Regional;
 use App\Tables\Table;
 use App\Tables\TableColumn;
 
-final class CountryTable extends Table
+final class LanguageTable extends Table
 {
     public static function columns(): array
     {

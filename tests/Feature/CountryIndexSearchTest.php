@@ -6,7 +6,6 @@ use App\Models\Regional\Country;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Volt\Volt;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class CountryIndexSearchTest extends TestCase
@@ -20,17 +19,20 @@ class CountryIndexSearchTest extends TestCase
         config(['app.debug' => false]);
     }
 
-    #[DataProvider('searchProvider')]
-    public function test_country_index_search_filters_results(string $search, string $expectedName, string $unexpectedName): void
+    public function test_country_index_search_filters_results(): void
     {
         $this->seedCountries();
         $user = User::factory()->create();
 
-        Volt::actingAs($user)
-            ->test('apps.master.regional.country.index')
-            ->set('search', $search)
-            ->assertSee($expectedName)
-            ->assertDontSee($unexpectedName);
+        $component = Volt::actingAs($user)
+            ->test('apps.master.country.index');
+
+        foreach ($this->searchCases() as [$search, $expectedName, $unexpectedName]) {
+            $component
+                ->set('search', $search)
+                ->assertSee($expectedName)
+                ->assertDontSee($unexpectedName);
+        }
     }
 
     public function test_country_index_includes_loading_skeleton_markup(): void
@@ -38,7 +40,7 @@ class CountryIndexSearchTest extends TestCase
         $user = User::factory()->create();
 
         Volt::actingAs($user)
-            ->test('apps.master.regional.country.index')
+            ->test('apps.master.country.index')
             ->assertSee('wire:loading', false)
             ->assertSee('wire:loading.remove', false);
     }
@@ -53,12 +55,22 @@ class CountryIndexSearchTest extends TestCase
             ->assertSeeLivewire('apps.shared.notification.form');
     }
 
+    public function test_country_index_renders_delete_modal_component(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)
+            ->get(route('app.country'))
+            ->assertOk()
+            ->assertSeeLivewire('apps.actions.delete');
+    }
+
     public function test_country_index_renders_header_dropdown_items(): void
     {
         $user = User::factory()->create();
 
         Volt::actingAs($user)
-            ->test('apps.master.regional.country.index')
+            ->test('apps.master.country.index')
             ->assertSee('Import Countries')
             ->assertSee('Export Countries');
     }
@@ -68,7 +80,7 @@ class CountryIndexSearchTest extends TestCase
         $user = User::factory()->create();
 
         Volt::actingAs($user)
-            ->test('apps.master.regional.country.index')
+            ->test('apps.master.country.index')
             ->call('openViewSettings')
             ->set('viewSettingsDraft.visibleColumns', ['name'])
             ->call('saveViewSettings')
@@ -91,7 +103,7 @@ class CountryIndexSearchTest extends TestCase
         $country->save();
 
         Volt::actingAs($user)
-            ->test('apps.master.regional.country.index')
+            ->test('apps.master.country.index')
             ->call('deleteCountry', $country->id)
             ->assertHasNoErrors();
 
@@ -103,11 +115,15 @@ class CountryIndexSearchTest extends TestCase
     /**
      * @return array<int, array{0: string, 1: string, 2: string}>
      */
-    public static function searchProvider(): array
+    /**
+     * @return array<int, array{0: string, 1: string, 2: string}>
+     */
+    private function searchCases(): array
     {
         return [
             ['AA', 'AlphaLand', 'BetaRepublic'],
             ['Beta', 'BetaRepublic', 'AlphaLand'],
+            ['alphaland', 'AlphaLand', 'BetaRepublic'],
             ['777', 'AlphaLand', 'BetaRepublic'],
             ['SouthRealm', 'BetaRepublic', 'AlphaLand'],
             ['NorthwestReach', 'AlphaLand', 'BetaRepublic'],

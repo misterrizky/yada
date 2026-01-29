@@ -9,6 +9,7 @@ abstract class Table
     protected function add(TableColumn $column): static
     {
         $this->columns[] = $column;
+
         return $this;
     }
 
@@ -43,7 +44,9 @@ abstract class Table
 
     public function searchableFields(): array
     {
-        return collect($this->columns)
+        $columns = $this->columns === [] ? static::columns() : $this->columns;
+
+        return collect($columns)
             ->filter(fn (TableColumn $col) => $col->searchable)
             ->pluck('field')
             ->all();

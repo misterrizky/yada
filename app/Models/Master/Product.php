@@ -2,12 +2,8 @@
 
 namespace App\Models\Master;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Asset\InventoryItem;
+use App\Models\Concerns\Searchable;
 use App\Models\Finance\CreditNoteItem;
 use App\Models\Finance\InvoiceItem;
 use App\Models\Procurement\PurchaseOrderItem;
@@ -16,10 +12,35 @@ use App\Models\Sales\OrderItem;
 use App\Models\Sales\ProposalItem;
 use App\Models\Sales\QuotationItem;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, Searchable, SoftDeletes;
+
+    protected $fillable = [
+        'ulid',
+        'sku',
+        'name',
+        'short_desc',
+        'long_desc',
+        'thumbnail',
+        'category_id',
+        'unit_id',
+        'purchase_price',
+        'selling_price',
+        'tax_rate',
+        'is_purchasable',
+        'is_sellable',
+        'is_active',
+        'created_by',
+        'updated_by',
+    ];
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(ProductCategory::class, 'category_id');

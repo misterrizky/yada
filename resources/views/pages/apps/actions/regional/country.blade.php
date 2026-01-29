@@ -33,13 +33,24 @@
     <flux:button variant="ghost" icon="ellipsis-horizontal" tooltip="Actions" size="sm"/>
 
     <flux:menu>
+        @php
+            $deletePayload = [
+                'title' => 'Delete Country',
+                'message' => 'You are about to delete ' . $row->name . '. This action cannot be reversed.',
+                'confirmEvent' => 'country-delete-confirmed',
+                'recordId' => $row->id,
+                'confirmLabel' => 'Delete',
+            ];
+        @endphp
         <flux:menu.item icon="pencil-square" wire:click="$dispatch('country-edit', { countryId: {{ $row->id }} })">
             Edit
         </flux:menu.item>
 
         <flux:menu.separator />
-
-        <flux:menu.item variant="danger" icon="trash" wire:click="deleteCountry({{ $row->id }})" wire:confirm="Are you sure?">
+        <flux:menu.item
+            variant="danger"
+            icon="trash"
+            wire:click="$dispatchTo('apps.actions.delete', 'delete-modal-open', {{ \Illuminate\Support\Js::from($deletePayload) }})">
             Delete
         </flux:menu.item>
     </flux:menu>

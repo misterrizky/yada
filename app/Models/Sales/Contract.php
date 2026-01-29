@@ -2,20 +2,46 @@
 
 namespace App\Models\Sales;
 
+use App\Models\Concerns\Searchable;
+use App\Models\CRM\Company;
+use App\Models\PM\Project;
+use App\Models\Regional\Currency;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\CRM\Company;
-use App\Models\PM\Project;
-use App\Models\QA\DeliverySignoff;
-use App\Models\Regional\Currency;
-use App\Models\User;
 
 class Contract extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, Searchable, SoftDeletes;
+
+    protected $fillable = [
+        'ulid',
+        'contract_number',
+        'company_id',
+        'project_id',
+        'quotation_id',
+        'contract_type_id',
+        'subject',
+        'description',
+        'start_date',
+        'end_date',
+        'currency_id',
+        'contract_value',
+        'status',
+        'terms_conditions',
+        'notes',
+        'signed_by_company',
+        'company_signed_at',
+        'signed_by_internal',
+        'internal_signed_at',
+        'approved_by',
+        'approved_at',
+        'created_by',
+        'updated_by',
+    ];
+
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class, 'company_id');
@@ -54,15 +80,5 @@ class Contract extends Model
     public function updatedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'updated_by');
-    }
-
-    public function orders(): HasMany
-    {
-        return $this->hasMany(Order::class, 'contract_id');
-    }
-
-    public function deliverySignoffs(): HasMany
-    {
-        return $this->hasMany(DeliverySignoff::class, 'contract_id');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-use App\Exports\CurrencyExport;
+use App\Exports\Regional\CurrencyExport;
 use App\Models\Regional\Currency;
 use App\Models\User\UserFilter;
 use App\Tables\Regional\CurrencyTable as TableConfig;
@@ -9,14 +9,13 @@ use function Laravel\Folio\name;
 use function Livewire\Volt\{computed, mount, on, state, usesPagination};
 
 usesPagination();
-name('app.currency.show-currency');
+name('app.country.show-currency');
 
 state([
+    'country' => fn () => $country,
     'search' => '',
     'sortField' => '',
     'sortDirection' => 'asc',
-    'regions' => [],
-    'subregions' => [],
     'perPage' => 10,
     'perPageOptions' => [10, 25, 50, 100],
     'visibleColumns' => fn () => collect(TableConfig::columns())
@@ -46,8 +45,8 @@ state([
         ->all(),
     'searchableFields' => fn () => (new TableConfig)->searchableFields(),
     'headerDropdownItems' => fn () => [
-        ['label' => 'Import Countries', 'icon' => 'arrow-up-tray', 'clickable' => false],
-        ['label' => 'Export Countries', 'icon' => 'arrow-down-tray', 'clickable' => true, 'click' => 'currency-export'],
+        ['label' => 'Import Currencies', 'icon' => 'arrow-up-tray', 'clickable' => false],
+        ['label' => 'Export Currencies', 'icon' => 'arrow-down-tray', 'clickable' => true, 'click' => 'currency-export'],
     ],
 ]);
 
@@ -158,11 +157,9 @@ $storeUserFilter = function (\Livewire\Component $component) use ($currentViewSe
     }
 
     UserFilter::updateOrCreate(
-        ['user_id' => $userId, 'key' => 'countries_table'],
+        ['user_id' => $userId, 'key' => 'currencies'],
         ['value' => [
             'search' => $component->search,
-            'regions' => $component->regions,
-            'subregions' => $component->subregions,
             'view_settings' => $currentViewSettings($component),
         ]]
     );
@@ -171,26 +168,41 @@ $storeUserFilter = function (\Livewire\Component $component) use ($currentViewSe
 $export = function (): \Symfony\Component\HttpFoundation\BinaryFileResponse {
     $rows = Currency::query()
         ->search($this->search, $this->searchableFields)
-        ->when($this->regions, fn ($q) => $q->whereIn('region', $this->regions))
-        ->when($this->subregions, fn ($q) => $q->whereIn('subregion', $this->subregions))
+        ->when($this->country, fn ($q) => $q->where('country_id', $this->country->id))
         ->get();
 
-    return Excel::download(new CurrencyExport($rows), 'countries.xlsx');
+    return Excel::download(new CurrencyExport($rows), 'currencies.xlsx');
 };
 
-on(['currency-saved' => function () {
-    // Refresh otomatis terjadi karena state berubah atau dipanggil ulang
-}, 'currency-export' => $export]);
+$deleteCurrency = function (int $recordId): bool {
+    $currency = Currency::query()->findOrFail($recordId);
+    $currency->delete();
+
+    $this->dispatch('modal-close', name: 'delete');
+    $this->dispatch(
+        'notify',
+        title: 'Currency deleted',
+        message: 'The currency has been successfully deleted.'
+    );
+
+    return true;
+};
+
+on([
+    'currency-saved' => function () {
+        // Refresh otomatis terjadi karena state berubah atau dipanggil ulang
+    },
+    'currency-export' => $export,
+    'currency-delete-confirmed' => $deleteCurrency,
+]);
 
 mount(function () use ($applyViewSettings, $currentViewSettings) {
     $filter = UserFilter::where('user_id', auth()->id())
-        ->where('key', 'countries_table')
+        ->where('key', 'currencies')
         ->first();
 
     if ($filter) {
         $this->search = $filter->value['search'] ?? '';
-        $this->regions = $filter->value['regions'] ?? [];
-        $this->subregions = $filter->value['subregions'] ?? [];
         $applyViewSettings($this, $filter->value['view_settings'] ?? []);
     }
 
@@ -200,16 +212,6 @@ mount(function () use ($applyViewSettings, $currentViewSettings) {
 $updatedSearch = function () use ($storeUserFilter): void {
     $this->resetPage();
 
-    $storeUserFilter($this);
-};
-
-$updatedRegions = function () use ($storeUserFilter): void {
-    $this->resetPage();
-    $storeUserFilter($this);
-};
-
-$updatedSubregions = function () use ($storeUserFilter): void {
-    $this->resetPage();
     $storeUserFilter($this);
 };
 
@@ -247,35 +249,18 @@ $saveViewSettings = function () use ($applyViewSettings, $currentViewSettings, $
     $this->dispatch('modal-close', name: 'view-setting');
 };
 
-$deleteCurrency = function (Currency $currency): void {
-    $currency->delete();
+$currencies = computed(function (): \Illuminate\Contracts\Pagination\LengthAwarePaginator {
+    $query = $this->country
+        ? $this->country->currencies()->getQuery()
+        : Currency::query();
 
-    $this->dispatch(
-        'notify',
-        title: 'Currency deleted',
-        message: 'The currency has been successfully deleted.'
-    );
-};
-//$table = computed(fn() => (new TableConfig)->columns();
-//$columns = computed(fn() => (new TableConfig)->columns();
-$countries = computed(function (): \Illuminate\Contracts\Pagination\LengthAwarePaginator {
-    return Currency::query()
+    return $query
         ->search($this->search, $this->searchableFields)
-        ->when($this->regions, fn ($q) => $q->whereIn('region', $this->regions))
-        ->when($this->subregions, fn ($q) => $q->whereIn('subregion', $this->subregions))
         ->when($this->sortField, fn ($q) =>
-        $q->orderBy($this->sortField, $this->sortDirection)
+            $q->orderBy($this->sortField, $this->sortDirection)
         )
         ->paginate($this->perPage);
 });
-
-$chartData = computed(fn (): \Illuminate\Support\Collection => Currency::query()
-    ->when($this->regions, fn ($q) => $q->whereIn('region', $this->regions))
-    ->selectRaw('region, COUNT(*) as total')
-    ->groupBy('region')
-    ->orderBy('region')
-    ->get()
-);
 ?>
 <x-layouts.app :title="__('Regional : Currency')">
 @volt
@@ -314,7 +299,8 @@ $chartData = computed(fn (): \Illuminate\Support\Collection => Currency::query()
         <flux:breadcrumbs>
             <flux:breadcrumbs.item href="#">Dashboard</flux:breadcrumbs.item>
             <flux:breadcrumbs.item href="#">Master</flux:breadcrumbs.item>
-            <flux:breadcrumbs.item href="#">Regional</flux:breadcrumbs.item>
+            <flux:breadcrumbs.item href="#">Country</flux:breadcrumbs.item>
+            <flux:breadcrumbs.item>{{ $this->country->name }}</flux:breadcrumbs.item>
             <flux:breadcrumbs.item>Currency</flux:breadcrumbs.item>
         </flux:breadcrumbs>
         <div class="flex flex-wrap items-center lg:items-end justify-between gap-5 pb-7.5">
@@ -338,7 +324,7 @@ $chartData = computed(fn (): \Illuminate\Support\Collection => Currency::query()
         <div wire:loading.remove wire:target="search,sortBy,perPage,saveViewSettings,gotoPage,nextPage,previousPage">
             <x-data-table
                 :columns="$columns"
-                :rows="$this->countries"
+                :rows="$this->currencies"
                 :sort-field="$this->sortField"
                 :sort-direction="$this->sortDirection"
                 sort-action="sortBy"
@@ -353,7 +339,8 @@ $chartData = computed(fn (): \Illuminate\Support\Collection => Currency::query()
                 :polling-interval="$this->pollingInterval"
             />
         </div>
-        <livewire:apps.form.currency/>
+        <livewire:apps.actions.delete />
+        <livewire:apps.form.regional.currency/>
     </flux:main>
 @endvolt
 </x-layouts.app>

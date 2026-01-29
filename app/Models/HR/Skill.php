@@ -2,17 +2,25 @@
 
 namespace App\Models\HR;
 
+use App\Models\Concerns\Searchable;
+use App\Models\Resource\ResourceRequest;
+use App\Models\Resource\ResourceSkill;
+use App\Models\User\UserSkill;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Models\Resource\ResourceRequest;
-use App\Models\Resource\ResourceSkill;
-use App\Models\User\UserSkill;
 
 class Skill extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
+
+    protected $fillable = [
+        'skill_category_id',
+        'name',
+        'is_active',
+    ];
+
     public function skillCategory(): BelongsTo
     {
         return $this->belongsTo(SkillCategory::class, 'skill_category_id');

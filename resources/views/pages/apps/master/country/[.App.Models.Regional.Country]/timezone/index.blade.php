@@ -1,9 +1,9 @@
 <?php
 
-use App\Exports\CountryExport;
-use App\Models\Regional\Country;
+use App\Exports\Regional\TimezoneExport;
+use App\Models\Regional\Timezone;
 use App\Models\User\UserFilter;
-use App\Tables\CountryTable as TableConfig;
+use App\Tables\Regional\TimezoneTable as TableConfig;
 use Maatwebsite\Excel\Facades\Excel;
 use function Laravel\Folio\name;
 use function Livewire\Volt\{computed, mount, on, state, usesPagination};
@@ -12,11 +12,10 @@ usesPagination();
 name('app.country.show-timezone');
 
 state([
+    'country' => fn () => $country,
     'search' => '',
     'sortField' => '',
     'sortDirection' => 'asc',
-    'regions' => [],
-    'subregions' => [],
     'perPage' => 10,
     'perPageOptions' => [10, 25, 50, 100],
     'visibleColumns' => fn () => collect(TableConfig::columns())
@@ -46,8 +45,8 @@ state([
         ->all(),
     'searchableFields' => fn () => (new TableConfig)->searchableFields(),
     'headerDropdownItems' => fn () => [
-        ['label' => 'Import Countries', 'icon' => 'arrow-up-tray', 'clickable' => false],
-        ['label' => 'Export Countries', 'icon' => 'arrow-down-tray', 'clickable' => true, 'click' => 'country-export'],
+        ['label' => 'Import Timezones', 'icon' => 'arrow-up-tray', 'clickable' => false],
+        ['label' => 'Export Timezones', 'icon' => 'arrow-down-tray', 'clickable' => true, 'click' => 'timezone-export'],
     ],
 ]);
 
@@ -158,39 +157,52 @@ $storeUserFilter = function (\Livewire\Component $component) use ($currentViewSe
     }
 
     UserFilter::updateOrCreate(
-        ['user_id' => $userId, 'key' => 'countries_table'],
+        ['user_id' => $userId, 'key' => 'timezones'],
         ['value' => [
             'search' => $component->search,
-            'regions' => $component->regions,
-            'subregions' => $component->subregions,
             'view_settings' => $currentViewSettings($component),
         ]]
     );
 };
 
 $export = function (): \Symfony\Component\HttpFoundation\BinaryFileResponse {
-    $rows = Country::query()
+    $rows = Timezone::query()
         ->search($this->search, $this->searchableFields)
-        ->when($this->regions, fn ($q) => $q->whereIn('region', $this->regions))
-        ->when($this->subregions, fn ($q) => $q->whereIn('subregion', $this->subregions))
+        ->when($this->country, fn ($q) => $q->where('country_id', $this->country->id))
         ->get();
 
-    return Excel::download(new CountryExport($rows), 'countries.xlsx');
+    return Excel::download(new TimezoneExport($rows), 'timezones.xlsx');
 };
 
-on(['country-saved' => function () {
-    // Refresh otomatis terjadi karena state berubah atau dipanggil ulang
-}, 'country-export' => $export]);
+$deleteTimezone = function (int $recordId): bool {
+    $timezone = Timezone::query()->findOrFail($recordId);
+    $timezone->delete();
+
+    $this->dispatch('modal-close', name: 'delete');
+    $this->dispatch(
+        'notify',
+        title: 'Timezone deleted',
+        message: 'The timezone has been successfully deleted.'
+    );
+
+    return true;
+};
+
+on([
+    'timezone-saved' => function () {
+        // Refresh otomatis terjadi karena state berubah atau dipanggil ulang
+    },
+    'timezone-export' => $export,
+    'timezone-delete-confirmed' => $deleteTimezone,
+]);
 
 mount(function () use ($applyViewSettings, $currentViewSettings) {
     $filter = UserFilter::where('user_id', auth()->id())
-        ->where('key', 'countries_table')
+        ->where('key', 'timezones')
         ->first();
 
     if ($filter) {
         $this->search = $filter->value['search'] ?? '';
-        $this->regions = $filter->value['regions'] ?? [];
-        $this->subregions = $filter->value['subregions'] ?? [];
         $applyViewSettings($this, $filter->value['view_settings'] ?? []);
     }
 
@@ -200,16 +212,6 @@ mount(function () use ($applyViewSettings, $currentViewSettings) {
 $updatedSearch = function () use ($storeUserFilter): void {
     $this->resetPage();
 
-    $storeUserFilter($this);
-};
-
-$updatedRegions = function () use ($storeUserFilter): void {
-    $this->resetPage();
-    $storeUserFilter($this);
-};
-
-$updatedSubregions = function () use ($storeUserFilter): void {
-    $this->resetPage();
     $storeUserFilter($this);
 };
 
@@ -247,37 +249,20 @@ $saveViewSettings = function () use ($applyViewSettings, $currentViewSettings, $
     $this->dispatch('modal-close', name: 'view-setting');
 };
 
-$deleteCountry = function (Country $country): void {
-    $country->delete();
+$timezones = computed(function (): \Illuminate\Contracts\Pagination\LengthAwarePaginator {
+    $query = $this->country
+        ? $this->country->timezones()->getQuery()
+        : Timezone::query();
 
-    $this->dispatch(
-        'notify',
-        title: 'Country deleted',
-        message: 'The country has been successfully deleted.'
-    );
-};
-//$table = computed(fn() => (new TableConfig)->columns();
-//$columns = computed(fn() => (new TableConfig)->columns();
-$countries = computed(function (): \Illuminate\Contracts\Pagination\LengthAwarePaginator {
-    return Country::query()
+    return $query
         ->search($this->search, $this->searchableFields)
-        ->when($this->regions, fn ($q) => $q->whereIn('region', $this->regions))
-        ->when($this->subregions, fn ($q) => $q->whereIn('subregion', $this->subregions))
         ->when($this->sortField, fn ($q) =>
-        $q->orderBy($this->sortField, $this->sortDirection)
+            $q->orderBy($this->sortField, $this->sortDirection)
         )
         ->paginate($this->perPage);
 });
-
-$chartData = computed(fn (): \Illuminate\Support\Collection => Country::query()
-    ->when($this->regions, fn ($q) => $q->whereIn('region', $this->regions))
-    ->selectRaw('region, COUNT(*) as total')
-    ->groupBy('region')
-    ->orderBy('region')
-    ->get()
-);
 ?>
-<x-layouts.app :title="__('Regional : Country')">
+<x-layouts.app :title="__('Regional : Timezone')">
 @volt
     @php
     use App\Tables\TableColumn;
@@ -304,9 +289,9 @@ $chartData = computed(fn (): \Illuminate\Support\Collection => Country::query()
                         @endforeach
                     </flux:menu>
                 </flux:dropdown>
-                <flux:modal.trigger name="form-country" wire:click="$dispatch('country-create')">
+                <flux:modal.trigger name="form-timezone" wire:click="$dispatch('timezone-create')">
                     <flux:button size="sm" variant="primary" color="sky" icon="plus">
-                        Create Country
+                        Create Timezone
                     </flux:button>
                 </flux:modal.trigger>
             </div>
@@ -314,12 +299,13 @@ $chartData = computed(fn (): \Illuminate\Support\Collection => Country::query()
         <flux:breadcrumbs>
             <flux:breadcrumbs.item href="#">Dashboard</flux:breadcrumbs.item>
             <flux:breadcrumbs.item href="#">Master</flux:breadcrumbs.item>
-            <flux:breadcrumbs.item href="#">Regional</flux:breadcrumbs.item>
-            <flux:breadcrumbs.item>Country</flux:breadcrumbs.item>
+            <flux:breadcrumbs.item href="#">Country</flux:breadcrumbs.item>
+            <flux:breadcrumbs.item>{{ $this->country->name }}</flux:breadcrumbs.item>
+            <flux:breadcrumbs.item>Timezone</flux:breadcrumbs.item>
         </flux:breadcrumbs>
         <div class="flex flex-wrap items-center lg:items-end justify-between gap-5 pb-7.5">
             <div class="flex flex-col justify-center gap-2">
-                <flux:heading class="mt-5" size="xl" level="1">Country</flux:heading>
+                <flux:heading class="mt-5" size="xl" level="1">Timezone</flux:heading>
                 <flux:input
                     wire:model.live.debounce.500ms="search"
                     size="lg"
@@ -332,14 +318,13 @@ $chartData = computed(fn (): \Illuminate\Support\Collection => Country::query()
         <flux:separator variant="subtle" />
         <div wire:loading wire:target="search,sortBy,perPage,saveViewSettings,gotoPage,nextPage,previousPage">
             <x-app.skeleton.table
-                :columns="\App\Tables\CountryTable::columns()"
-                :rows="10"
+                :columns="\App\Tables\Regional\TimezoneTable::columns()" :rows="10"
             />
         </div>
         <div wire:loading.remove wire:target="search,sortBy,perPage,saveViewSettings,gotoPage,nextPage,previousPage">
             <x-data-table
                 :columns="$columns"
-                :rows="$this->countries"
+                :rows="$this->timezones"
                 :sort-field="$this->sortField"
                 :sort-direction="$this->sortDirection"
                 sort-action="sortBy"
@@ -354,7 +339,8 @@ $chartData = computed(fn (): \Illuminate\Support\Collection => Country::query()
                 :polling-interval="$this->pollingInterval"
             />
         </div>
-        <livewire:apps.form.country/>
+        <livewire:apps.actions.delete />
+        <livewire:apps.form.regional.timezone/>
     </flux:main>
 @endvolt
 </x-layouts.app>

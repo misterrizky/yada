@@ -13,7 +13,7 @@ class CountryDrawerFormTest extends TestCase
 
     public function test_country_form_creates_country(): void
     {
-        Volt::test('apps.form.country')
+        Volt::test('apps.form.regional.country')
             ->set('iso2', 'US')
             ->set('iso3', 'USA')
             ->set('phone_code', '1')
@@ -48,7 +48,7 @@ class CountryDrawerFormTest extends TestCase
         $country->status = 1;
         $country->save();
 
-        Volt::test('apps.form.country')
+        Volt::test('apps.form.regional.country')
             ->call('startEdit', $country->id)
             ->assertDispatched('modal-show', name: 'form-country')
             ->set('name', 'Indonesia Raya')
@@ -66,7 +66,7 @@ class CountryDrawerFormTest extends TestCase
 
     public function test_country_form_requires_required_fields(): void
     {
-        Volt::test('apps.form.country')
+        Volt::test('apps.form.regional.country')
             ->call('save')
             ->assertHasErrors([
                 'iso2' => 'required',
@@ -80,7 +80,7 @@ class CountryDrawerFormTest extends TestCase
 
     public function test_country_form_validates_field_lengths_and_status(): void
     {
-        Volt::test('apps.form.country')
+        Volt::test('apps.form.regional.country')
             ->set('iso2', 'A')
             ->set('iso3', 'US')
             ->set('phone_code', '123456')

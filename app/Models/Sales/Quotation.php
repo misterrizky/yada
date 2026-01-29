@@ -2,20 +2,47 @@
 
 namespace App\Models\Sales;
 
+use App\Models\Concerns\Searchable;
+use App\Models\CRM\Company;
+use App\Models\CRM\Lead;
+use App\Models\Regional\Currency;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\CRM\Company;
-use App\Models\CRM\Lead;
-use App\Models\Finance\Invoice;
-use App\Models\Regional\Currency;
-use App\Models\User;
 
 class Quotation extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, Searchable, SoftDeletes;
+
+    protected $fillable = [
+        'ulid',
+        'quotation_number',
+        'lead_id',
+        'company_id',
+        'proposal_id',
+        'title',
+        'description',
+        'valid_until',
+        'status',
+        'currency_id',
+        'sub_total',
+        'discount',
+        'discount_type',
+        'tax',
+        'total',
+        'terms_conditions',
+        'notes',
+        'approved_by',
+        'approved_at',
+        'sent_at',
+        'accepted_at',
+        'created_by',
+        'updated_by',
+    ];
+
     public function lead(): BelongsTo
     {
         return $this->belongsTo(Lead::class, 'lead_id');
@@ -56,18 +83,13 @@ class Quotation extends Model
         return $this->hasMany(QuotationItem::class, 'quotation_id');
     }
 
-    public function contracts(): HasMany
-    {
-        return $this->hasMany(Contract::class, 'quotation_id');
-    }
-
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class, 'quotation_id');
     }
 
-    public function invoices(): HasMany
+    public function contracts(): HasMany
     {
-        return $this->hasMany(Invoice::class, 'quotation_id');
+        return $this->hasMany(Contract::class, 'quotation_id');
     }
 }

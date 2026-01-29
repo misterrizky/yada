@@ -2,18 +2,20 @@
 
 namespace App\Models\Regional;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Concerns\Searchable;
 use App\Models\CRM\ClientAddress;
 use App\Models\HR\Employee;
 use App\Models\Procurement\VendorAddress;
 use App\Models\User\UserAddress;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class State extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
+
     public function country(): BelongsTo
     {
         return $this->belongsTo(Country::class, 'country_id');

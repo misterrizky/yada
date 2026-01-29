@@ -29,7 +29,7 @@ final class CurrencyTable extends Table
                 TableColumn::text('decimal_mark', 'Decimal Mark')
             )
             ->column(
-                TableColumn::text('thousand_separator', 'Thousand Separator')
+                TableColumn::text('thousands_separator', 'Thousands Separator')
             )
             ->column(
                 TableColumn::badge('symbol_first', 'Symbol First')

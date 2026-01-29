@@ -2,30 +2,53 @@
 
 namespace App\Models\CRM;
 
-use App\Models\User;
-use Spatie\Tags\HasTags;
-use App\Models\PM\Project;
-use App\Models\Sales\Order;
-use App\Models\Sales\Contract;
-use App\Models\Sales\Proposal;
-use App\Models\Support\Ticket;
+use App\Models\Concerns\Searchable;
+use App\Models\Finance\CreditNote;
 use App\Models\Finance\Expense;
 use App\Models\Finance\Invoice;
+use App\Models\Finance\InvoiceRecurring;
 use App\Models\Finance\Payment;
 use App\Models\Master\Industry;
-use App\Models\Sales\Quotation;
+use App\Models\PM\Project;
 use App\Models\Regional\Currency;
-use App\Models\Finance\CreditNote;
-use Illuminate\Database\Eloquent\Model;
-use App\Models\Finance\InvoiceRecurring;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Sales\Contract;
+use App\Models\Sales\Order;
+use App\Models\Sales\Proposal;
+use App\Models\Sales\Quotation;
+use App\Models\Support\Ticket;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Tags\HasTags;
 
 class Company extends Model
 {
-    use HasFactory, HasTags, SoftDeletes;
+    use HasFactory, HasTags, Searchable, SoftDeletes;
+
+    protected $fillable = [
+        'ulid',
+        'code',
+        'name',
+        'email',
+        'phone',
+        'website',
+        'email_procurement',
+        'phone_procurement',
+        'website_procurement',
+        'tax_number',
+        'notes',
+        'status',
+        'industry_id',
+        'currency_id',
+        'source_id',
+        'account_manager_id',
+        'created_by',
+        'updated_by',
+    ];
+
     public function industry(): BelongsTo
     {
         return $this->belongsTo(Industry::class, 'industry_id');
@@ -36,9 +59,19 @@ class Company extends Model
         return $this->belongsTo(Currency::class, 'currency_id');
     }
 
-    public function user(): HasMany
+    public function source(): BelongsTo
     {
-        return $this->hasMany(User::class, 'user_id');
+        return $this->belongsTo(Source::class, 'source_id');
+    }
+
+    public function accountManager(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'account_manager_id');
+    }
+
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class, 'company_id');
     }
 
     public function createdBy(): BelongsTo

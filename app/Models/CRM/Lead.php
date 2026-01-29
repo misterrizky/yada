@@ -2,27 +2,51 @@
 
 namespace App\Models\CRM;
 
+use App\Models\Concerns\Searchable;
+use App\Models\Master\Industry;
+use App\Models\Master\Stage;
+use App\Models\Sales\Proposal;
+use App\Models\Sales\Quotation;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Master\Industry;
-use App\Models\Sales\Proposal;
-use App\Models\Sales\Quotation;
-use App\Models\User;
 
 class Lead extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, Searchable, SoftDeletes;
+
+    protected $fillable = [
+        'ulid',
+        'code',
+        'name',
+        'company_name',
+        'email',
+        'phone',
+        'website',
+        'address',
+        'value',
+        'notes',
+        'source_id',
+        'stage_id',
+        'industry_id',
+        'user_id',
+        'company_id',
+        'converted_at',
+        'created_by',
+        'updated_by',
+    ];
+
     public function source(): BelongsTo
     {
         return $this->belongsTo(Source::class, 'source_id');
     }
 
-    public function leadStage(): BelongsTo
+    public function stage(): BelongsTo
     {
-        return $this->belongsTo(LeadStage::class, 'lead_stage_id');
+        return $this->belongsTo(Stage::class, 'stage_id');
     }
 
     public function industry(): BelongsTo

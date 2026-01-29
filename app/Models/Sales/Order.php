@@ -2,19 +2,43 @@
 
 namespace App\Models\Sales;
 
+use App\Models\Concerns\Searchable;
+use App\Models\CRM\Company;
+use App\Models\Regional\Currency;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\CRM\Company;
-use App\Models\Finance\Invoice;
-use App\Models\Regional\Currency;
-use App\Models\User;
 
 class Order extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, Searchable, SoftDeletes;
+
+    protected $fillable = [
+        'ulid',
+        'order_number',
+        'company_id',
+        'quotation_id',
+        'contract_id',
+        'order_date',
+        'expected_delivery_date',
+        'currency_id',
+        'sub_total',
+        'discount',
+        'discount_type',
+        'tax',
+        'total',
+        'status',
+        'delivery_address',
+        'notes',
+        'approved_by',
+        'approved_at',
+        'created_by',
+        'updated_by',
+    ];
+
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class, 'company_id');
@@ -53,10 +77,5 @@ class Order extends Model
     public function orderItems(): HasMany
     {
         return $this->hasMany(OrderItem::class, 'order_id');
-    }
-
-    public function invoices(): HasMany
-    {
-        return $this->hasMany(Invoice::class, 'order_id');
     }
 }

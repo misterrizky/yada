@@ -1,27 +1,22 @@
-<flux:sidebar.group expandable :expanded="false" icon="building-office-2" heading="CRM" class="grid">
-    <flux:sidebar.item href="#">Companies</flux:sidebar.item>
-    <flux:sidebar.item href="#">Company Addresses</flux:sidebar.item>
-    <flux:sidebar.item href="#">Company Contacts</flux:sidebar.item>
-    <flux:sidebar.item href="#">Leads</flux:sidebar.item>
-    <flux:sidebar.item href="#">Lost Reasons</flux:sidebar.item>
+<flux:sidebar.group expandable :expanded="request()->routeIs('app.crm.*') ? true : false" icon="building-office-2" heading="CRM" class="grid">
+    <flux:sidebar.item :href="route('app.crm.lost-reason')" :current="request()->routeIs('app.crm.lost-reason')" wire:navigate>Lost Reasons</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.crm.leads')" :current="request()->routeIs('app.crm.leads')" wire:navigate>Leads</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.crm.companies')" :current="request()->routeIs('app.crm.companies')" wire:navigate>Companies</flux:sidebar.item>
 </flux:sidebar.group>
 <flux:sidebar.group expandable :expanded="false" icon="shopping-cart" heading="Sales" class="grid">
-    <flux:sidebar.item href="#">Product Categories</flux:sidebar.item>
-    <flux:sidebar.item href="#">Product Units</flux:sidebar.item>
-    <flux:sidebar.item href="#">Products</flux:sidebar.item>
-    <flux:sidebar.item href="#">Contract Types</flux:sidebar.item>
-    <flux:sidebar.item href="#">Proposals</flux:sidebar.item>
-    <flux:sidebar.item href="#">Proposal Items</flux:sidebar.item>
-    <flux:sidebar.item href="#">Quotations</flux:sidebar.item>
-    <flux:sidebar.item href="#">Quotation Items</flux:sidebar.item>
-    <flux:sidebar.item href="#">Contracts</flux:sidebar.item>
-    <flux:sidebar.item href="#">Orders</flux:sidebar.item>
-    <flux:sidebar.item href="#">Order Items</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.product-category')" :current="request()->routeIs('dashboard')" wire:navigate>Product Categories</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.product-unit')" :current="request()->routeIs('dashboard')" wire:navigate>Product Units</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.product')" :current="request()->routeIs('dashboard')" wire:navigate>Products</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.contract-type')" :current="request()->routeIs('dashboard')" wire:navigate>Contract Types</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.proposal')" :current="request()->routeIs('dashboard')" wire:navigate>Proposals</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.quotation')" :current="request()->routeIs('dashboard')" wire:navigate>Quotations</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.contract')" :current="request()->routeIs('dashboard')" wire:navigate>Contracts</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.order')" :current="request()->routeIs('dashboard')" wire:navigate>Orders</flux:sidebar.item>
 </flux:sidebar.group>
 <flux:sidebar.group expandable :expanded="false" icon="clipboard-document-list" heading="Project" class="grid">
-    <flux:sidebar.item href="#">Solution Categories</flux:sidebar.item>
-    <flux:sidebar.item href="#">Solution Units</flux:sidebar.item>
-    <flux:sidebar.item href="#">Solutions</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.solution-category')" :current="request()->routeIs('dashboard')" wire:navigate>Solution Categories</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.solution-unit')" :current="request()->routeIs('dashboard')" wire:navigate>Solution Units</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.solution')" :current="request()->routeIs('dashboard')" wire:navigate>Solutions</flux:sidebar.item>
     <flux:sidebar.item href="#">Project Categories</flux:sidebar.item>
     <flux:sidebar.item href="#">Projects</flux:sidebar.item>
     <flux:sidebar.item href="#">Project Galleries</flux:sidebar.item>
@@ -174,36 +169,29 @@
 <flux:sidebar.group expandable :expanded="false" icon="circle-stack" heading="Master Data" class="grid">
     <flux:sidebar.item :href="route('app.country')" :current="request()->routeIs('dashboard')" wire:navigate>Countries</flux:sidebar.item>
     <flux:sidebar.item href="#">Ratecard Catalogs</flux:sidebar.item>
-    <flux:sidebar.item href="#">Banks</flux:sidebar.item>
-    <flux:sidebar.item href="#">Pipelines</flux:sidebar.item>
-    <flux:sidebar.item href="#">Stages</flux:sidebar.item>
-    <flux:sidebar.item href="#">Blood Types</flux:sidebar.item>
-    <flux:sidebar.item href="#">Certificates</flux:sidebar.item>
-    <flux:sidebar.item href="#">Degrees</flux:sidebar.item>
-    <flux:sidebar.item href="#">Job Levels</flux:sidebar.item>
-    <flux:sidebar.item href="#">Industries</flux:sidebar.item>
-    <flux:sidebar.item href="#">Religions</flux:sidebar.item>
-    <flux:sidebar.item href="#">Skill Categories</flux:sidebar.item>
-    <flux:sidebar.item href="#">Skills</flux:sidebar.item>
-    <flux:sidebar.item href="#">Sources</flux:sidebar.item>
-    <flux:sidebar.item href="#">Tax Rates</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.bank')" :current="request()->routeIs('dashboard')" wire:navigate>Banks</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.pipeline')" :current="request()->routeIs('dashboard')" wire:navigate>Pipelines</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.stage')" :current="request()->routeIs('dashboard')" wire:navigate>Stages</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.blood-type')" :current="request()->routeIs('dashboard')" wire:navigate>Blood Types</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.certificate')" :current="request()->routeIs('dashboard')" wire:navigate>Certificates</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.degree')" :current="request()->routeIs('dashboard')" wire:navigate>Degrees</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.job-level')" :current="request()->routeIs('dashboard')" wire:navigate>Job Levels</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.industry')" :current="request()->routeIs('dashboard')" wire:navigate>Industries</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.religion')" :current="request()->routeIs('dashboard')" wire:navigate>Religions</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.skill-category')" :current="request()->routeIs('dashboard')" wire:navigate>Skill Categories</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.skill')" :current="request()->routeIs('dashboard')" wire:navigate>Skills</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.source')" :current="request()->routeIs('dashboard')" wire:navigate>Sources</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.tax-rate')" :current="request()->routeIs('dashboard')" wire:navigate>Tax Rates</flux:sidebar.item>
 </flux:sidebar.group>
 <flux:sidebar.group expandable :expanded="false" icon="trophy" heading="Achievements" class="grid">
-    <flux:sidebar.item href="#">Levels</flux:sidebar.item>
-    <flux:sidebar.item href="#">Experiences</flux:sidebar.item>
-    <flux:sidebar.item href="#">Experience Audits</flux:sidebar.item>
-    <flux:sidebar.item href="#">Achievements</flux:sidebar.item>
-    <flux:sidebar.item href="#">Achievement Users</flux:sidebar.item>
-    <flux:sidebar.item href="#">Streak Activities</flux:sidebar.item>
-    <flux:sidebar.item href="#">Streaks</flux:sidebar.item>
-    <flux:sidebar.item href="#">Streak Histories</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.level')" :current="request()->routeIs('dashboard')" wire:navigate>Levels</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.experience')" :current="request()->routeIs('dashboard')" wire:navigate>Experiences</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.achievement')" :current="request()->routeIs('dashboard')" wire:navigate>Achievements</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.streak')" :current="request()->routeIs('dashboard')" wire:navigate>Streaks</flux:sidebar.item>
 </flux:sidebar.group>
 <flux:sidebar.group expandable :expanded="false" icon="key" heading="RBAC" class="grid">
-    <flux:sidebar.item href="#">Roles</flux:sidebar.item>
-    <flux:sidebar.item href="#">Permissions</flux:sidebar.item>
-    <flux:sidebar.item href="#">Model Has Roles</flux:sidebar.item>
-    <flux:sidebar.item href="#">Model Has Permissions</flux:sidebar.item>
-    <flux:sidebar.item href="#">Role Has Permissions</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.role')" :current="request()->routeIs('dashboard')" wire:navigate>Roles</flux:sidebar.item>
+    <flux:sidebar.item :href="route('app.permission')" :current="request()->routeIs('dashboard')" wire:navigate>Permissions</flux:sidebar.item>
 </flux:sidebar.group>
 <flux:sidebar.group expandable :expanded="false" icon="cpu-chip" heading="System" class="grid">
     <flux:sidebar.item href="#">Cache</flux:sidebar.item>

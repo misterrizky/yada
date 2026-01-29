@@ -2,21 +2,41 @@
 
 namespace App\Models\Master;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Concerns\Searchable;
 use App\Models\Finance\CreditNoteItem;
 use App\Models\Finance\InvoiceItem;
 use App\Models\Sales\OrderItem;
 use App\Models\Sales\ProposalItem;
 use App\Models\Sales\QuotationItem;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Solution extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, Searchable, SoftDeletes;
+
+    protected $fillable = [
+        'ulid',
+        'code',
+        'name',
+        'short_desc',
+        'long_desc',
+        'thumbnail',
+        'category_id',
+        'unit_id',
+        'hourly_rate',
+        'daily_rate',
+        'fixed_price',
+        'tax_rate',
+        'is_active',
+        'created_by',
+        'updated_by',
+    ];
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(SolutionCategory::class, 'category_id');

@@ -158,7 +158,7 @@ $storeUserFilter = function (\Livewire\Component $component) use ($currentViewSe
     }
 
     UserFilter::updateOrCreate(
-        ['user_id' => $userId, 'key' => 'countries_table'],
+        ['user_id' => $userId, 'key' => 'countries'],
         ['value' => [
             'search' => $component->search,
             'regions' => $component->regions,
@@ -178,13 +178,27 @@ $export = function (): \Symfony\Component\HttpFoundation\BinaryFileResponse {
     return Excel::download(new CountryExport($rows), 'countries.xlsx');
 };
 
+$deleteCountry = function (int $recordId): bool {
+    $country = Country::query()->findOrFail($recordId);
+    $country->delete();
+
+    $this->dispatch('modal-close', name: 'delete');
+    $this->dispatch(
+        'notify',
+        title: 'Country deleted',
+        message: 'The country has been successfully deleted.'
+    );
+
+    return true;
+};
+
 on(['country-saved' => function () {
     // Refresh otomatis terjadi karena state berubah atau dipanggil ulang
-}, 'country-export' => $export]);
+}, 'country-export' => $export, 'country-delete-confirmed' => $deleteCountry]);
 
 mount(function () use ($applyViewSettings, $currentViewSettings) {
     $filter = UserFilter::where('user_id', auth()->id())
-        ->where('key', 'countries_table')
+        ->where('key', 'countries')
         ->first();
 
     if ($filter) {
@@ -246,18 +260,6 @@ $saveViewSettings = function () use ($applyViewSettings, $currentViewSettings, $
     $this->viewSettingsDraft = $currentViewSettings($this);
     $this->dispatch('modal-close', name: 'view-setting');
 };
-
-$deleteCountry = function (Country $country): void {
-    $country->delete();
-
-    $this->dispatch(
-        'notify',
-        title: 'Country deleted',
-        message: 'The country has been successfully deleted.'
-    );
-};
-//$table = computed(fn() => (new TableConfig)->columns();
-//$columns = computed(fn() => (new TableConfig)->columns();
 $countries = computed(function (): \Illuminate\Contracts\Pagination\LengthAwarePaginator {
     return Country::query()
         ->search($this->search, $this->searchableFields)
@@ -359,7 +361,11 @@ $chartData = computed(fn (): \Illuminate\Support\Collection => Country::query()
                 :polling-interval="$this->pollingInterval"
             />
         </div>
-        <livewire:apps.form.country/>
+        <livewire:apps.actions.delete />
+        <livewire:apps.form.regional.country/>
+        <livewire:apps.form.regional.currency/>
+        <livewire:apps.form.regional.state/>
+        <livewire:apps.form.regional.timezone/>
     </flux:main>
 @endvolt
 </x-layouts.app>
