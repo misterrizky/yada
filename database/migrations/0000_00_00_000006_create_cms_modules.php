@@ -51,7 +51,7 @@ return new class extends Migration
             $table->timestamp('published_at')->nullable()->index();
             $table->string('featured_image')->nullable();
             $table->string('seo_title')->nullable();
-            $table->string('seo_description')->nullable();
+            $table->longtext('seo_description')->nullable();
             $table->string('canonical_url')->nullable();
             $table->json('meta')->nullable();
             $table->foreignId('author_id')->nullable()->constrained('users')->nullOnDelete();
@@ -95,6 +95,7 @@ return new class extends Migration
             $table->primary(['post_id', 'post_category_id']);
         });
     }
+
     public function down(): void
     {
         Schema::dropIfExists('post_category');

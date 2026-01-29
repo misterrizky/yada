@@ -39,7 +39,7 @@ name('web.solutions');
                 alt="" class="aspect-3/2 object-cover lg:aspect-auto lg:size-full" />
         </div>
     </div>
-    <div class="relative isolate overflow-x-hidden">
+    <div class="relative isolate">
         <section class="relative px-10 py-20 max-w-7xl mx-auto gsap-fade-up">
 
             <!-- Header -->

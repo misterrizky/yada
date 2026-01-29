@@ -1,4 +1,4 @@
-<div id="hero" class="relative isolate" aria-labelledby="hero-title">
+<div id="hero" class="relative isolate overflow-x-hidden" aria-labelledby="hero-title">
     <div class="mx-auto max-w-7xl">
         <div class="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
             <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"

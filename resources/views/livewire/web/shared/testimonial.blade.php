@@ -1,4 +1,4 @@
-<div id="impact" class="relative isolate" aria-labelledby="impact-title">
+<div id="impact" class="relative isolate mt-20" aria-labelledby="impact-title">
     <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
         <div class="max-w-4xl">
             <p class="text-base/7 font-semibold text-indigo-600 dark:text-indigo-400">
@@ -10,7 +10,7 @@
             </h2>
         </div>
     </div>
-    <div class="relative z-10 mt-32 mb-20 sm:mt-56 sm:mb-24 xl:mb-0">
+    <div class="relative z-10 sm:mt-20 sm:mb-32 xl:mb-0">
         <div aria-hidden="true" class="absolute inset-0 overflow-hidden">
             <div class="absolute top-[calc(50%-36rem)] left-[calc(50%-19rem)] transform-gpu blur-3xl">
                 <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" class="aspect-1097/1023 w-274.25 bg-linear-to-r from-[#7775D6] to-[#191970] opacity-25"></div>

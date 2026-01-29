@@ -31,5 +31,6 @@ $collection = computed(function () {
                 </div>
             @endforeach
         </div>
+        
     </div>
 </div>

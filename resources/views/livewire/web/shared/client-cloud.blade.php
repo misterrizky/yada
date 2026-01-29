@@ -43,61 +43,61 @@
                      class="col-span-1 max-h-12 w-full object-contain dark:hidden" />
                 <img width="200" height="70" src="{{ asset('assets/media/img/client_company/ahm3.svg') }}" alt="AHM" loading="lazy" decoding="async"
                      class="hidden col-span-1 max-h-12 w-full object-contain dark:block" />
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/src.png') }}" alt="SRC" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/PT_PSU_BACKGROUND-removebg-preview.png') }}" alt="SRC" loading="lazy" decoding="async"
                      class="col-span-1 max-h-12 w-full object-contain dark:hidden" />
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/src.png') }}" alt="SRC" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/PT_PSU_BACKGROUND-removebg-preview.png') }}" alt="SRC" loading="lazy" decoding="async"
                      class="hidden col-span-1 max-h-12 w-full object-contain dark:block" />
 
                 {{-- PU --}}
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/pu.jpg') }}" alt="Ministry of Public Works" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/pusat-intel-angkatan-darat.png') }}" alt="Ministry of Public Works" loading="lazy" decoding="async"
                      class="col-span-1 max-h-12 w-full object-contain dark:hidden" />
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/pu.jpg') }}" alt="Ministry of Public Works" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/pusat-intel-angkatan-darat.png') }}" alt="Ministry of Public Works" loading="lazy" decoding="async"
                      class="hidden col-span-1 max-h-12 w-full object-contain dark:block" />
 
                 {{-- Kemendagri --}}
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/kemendagri.png') }}" alt="Ministry of Home Affairs" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/Republikorp_BG-removebg-preview.png') }}" alt="Ministry of Home Affairs" loading="lazy" decoding="async"
                      class="col-span-1 max-h-12 w-full object-contain dark:hidden" />
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/kemendagri.png') }}" alt="Ministry of Home Affairs" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/republikorp.webp') }}" alt="Ministry of Home Affairs" loading="lazy" decoding="async"
                      class="hidden col-span-1 max-h-12 w-full object-contain dark:block" />
 
                 {{-- BGN --}}
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/bgn.png') }}" alt="BGN" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/itenas.png') }}" alt="BGN" loading="lazy" decoding="async"
                      class="col-span-1 max-h-12 w-full object-contain dark:hidden" />
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/bgn.png') }}" alt="BGN" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/itenas_white_transparent.png') }}" alt="BGN" loading="lazy" decoding="async"
                      class="hidden col-span-1 max-h-12 w-full object-contain dark:block" />
 
                 {{-- AHM --}}
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/ahm3.svg') }}" alt="AHM" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/coway.png') }}" alt="AHM" loading="lazy" decoding="async"
                      class="col-span-1 max-h-12 w-full object-contain dark:hidden" />
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/ahm3.svg') }}" alt="AHM" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/coway.png') }}" alt="AHM" loading="lazy" decoding="async"
                      class="hidden col-span-1 max-h-12 w-full object-contain dark:block" />
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/src.png') }}" alt="SRC" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/kementrian-kelautan-removebg-preview.png') }}" alt="SRC" loading="lazy" decoding="async"
                      class="col-span-1 max-h-12 w-full object-contain dark:hidden" />
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/src.png') }}" alt="SRC" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/kementrian-kelautan-removebg-preview.png') }}" alt="SRC" loading="lazy" decoding="async"
                      class="hidden col-span-1 max-h-12 w-full object-contain dark:block" />
 
                 {{-- PU --}}
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/pu.jpg') }}" alt="Ministry of Public Works" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/Panasonic_logo_(Blue).svg.png') }}" alt="Ministry of Public Works" loading="lazy" decoding="async"
                      class="col-span-1 max-h-12 w-full object-contain dark:hidden" />
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/pu.jpg') }}" alt="Ministry of Public Works" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/Panasonic_logo_(Blue).svg.png') }}" alt="Ministry of Public Works" loading="lazy" decoding="async"
                      class="hidden col-span-1 max-h-12 w-full object-contain dark:block" />
 
                 {{-- Kemendagri --}}
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/kemendagri.png') }}" alt="Ministry of Home Affairs" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/BIN.png') }}" alt="Ministry of Home Affairs" loading="lazy" decoding="async"
                      class="col-span-1 max-h-12 w-full object-contain dark:hidden" />
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/kemendagri.png') }}" alt="Ministry of Home Affairs" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/BIN.png') }}" alt="Ministry of Home Affairs" loading="lazy" decoding="async"
                      class="hidden col-span-1 max-h-12 w-full object-contain dark:block" />
 
                 {{-- BGN --}}
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/bgn.png') }}" alt="BGN" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/ALV.png') }}" alt="BGN" loading="lazy" decoding="async"
                      class="col-span-1 max-h-12 w-full object-contain dark:hidden" />
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/bgn.png') }}" alt="BGN" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/ALV_white_transparent.png') }}" alt="BGN" loading="lazy" decoding="async"
                      class="hidden col-span-1 max-h-12 w-full object-contain dark:block" />
 
                 {{-- AHM --}}
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/ahm3.svg') }}" alt="AHM" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/adamasanya.png') }}" alt="AHM" loading="lazy" decoding="async"
                      class="col-span-1 max-h-12 w-full object-contain dark:hidden" />
-                <img width="200" height="70" src="{{ asset('assets/media/img/client_company/ahm3.svg') }}" alt="AHM" loading="lazy" decoding="async"
+                <img width="200" height="70" src="{{ asset('assets/media/company/adamasanya.png') }}" alt="AHM" loading="lazy" decoding="async"
                      class="hidden col-span-1 max-h-12 w-full object-contain dark:block" />
             </div>
 

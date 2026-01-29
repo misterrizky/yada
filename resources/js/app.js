@@ -69,16 +69,35 @@ AOS.init();
         });
     }
     function initCards() {
+<<<<<<< Updated upstream
         if (!document.querySelector(".card-item")) return;
         document.querySelectorAll(".card-item").forEach((card) => {
             if (card.dataset.cardBound) return;
             card.dataset.cardBound = "1";
+=======
+        document.querySelectorAll(".process-flow-container").forEach((container) => {
+            const isStatic = container.dataset.cardMode === "static";
+            const cards = container.querySelectorAll(".card-item");
+>>>>>>> Stashed changes
 
-            card.addEventListener("click", () => {
-                if (card.classList.contains("active")) return;
+            if (isStatic) {
+                cards.forEach((card) => {
+                    card.classList.add("active");
+                    card.dataset.cardBound = "1";
+                });
+                return;
+            }
 
-                document.querySelectorAll(".card-item.active").forEach((c) => c.classList.remove("active"));
-                card.classList.add("active");
+            cards.forEach((card) => {
+                if (card.dataset.cardBound) return;
+                card.dataset.cardBound = "1";
+
+                card.addEventListener("click", () => {
+                    if (card.classList.contains("active")) return;
+
+                    container.querySelectorAll(".card-item.active").forEach((c) => c.classList.remove("active"));
+                    card.classList.add("active");
+                });
             });
         });
     }
@@ -144,6 +163,7 @@ AOS.init();
 
     function initApp() {
         initThemeToggle();
+<<<<<<< Updated upstream
     }
 
     function initSSO() {
@@ -165,4 +185,14 @@ AOS.init();
 
     document.addEventListener("livewire:navigated", runInit);
     document.addEventListener("DOMContentLoaded", runInit);
+=======
+    });
+    document.addEventListener("DOMContentLoaded", () =>{
+        horizontalText();
+        homeHeroTitle();
+        initGallery();
+        initCards();
+        initThemeToggle();
+    });
+>>>>>>> Stashed changes
 })();

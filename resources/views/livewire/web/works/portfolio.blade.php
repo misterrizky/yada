@@ -108,8 +108,6 @@ Building Solutions for Diverse Industries
                         </div>
                     </div>
                 @endforeach
-
-
             </div>
 
             <!-- ================= PAGINATION ================= -->

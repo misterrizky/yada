@@ -1,4 +1,4 @@
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 sm:mb-24" id="team" data-team-section>
       <div class="mx-auto max-w-2xl lg:mx-0">
         <h2 class="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl dark:text-white">
           Our team
@@ -30,3 +30,4 @@
       </li>
     </ul>
     </div>
+    

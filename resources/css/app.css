@@ -278,6 +278,20 @@
             /* white-space: normal; */
         }
     }
+
+    .process-flow-container[data-card-mode="static"] {
+        height: auto;
+        align-items: stretch;
+    }
+
+    .process-flow-container[data-card-mode="static"] .card-item {
+        cursor: default;
+        align-items: stretch;
+    }
+
+    .process-flow-container[data-card-mode="static"] .card-content {
+        width: 100%;
+    }
     .gallerySlider .swiper-wrapper .swiper-slide img {
         -webkit-filter: blur(2.5px);
         filter: blur(2.5px);
